@@ -1,0 +1,1339 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+
+        <meta charset="utf-8" />
+
+        <meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport" />
+        <title>BlackTri Visual AB Editor</title>
+        <script type="text/javascript" async="" src="https://ssl.google-analytics.com/ga.js"></script><script type="text/javascript">
+            var isIE = false;
+        </script>
+        <!-- Conditionals not supported in IE 10 -->
+        <!--[if IE]>
+        <script type="text/javascript">
+            var isIE=true;
+    
+        </script>
+        <![endif]-->
+
+        <script type="text/javascript">
+            var path = 'https://www.blacktri.com/';/* used by validation engine*/
+            var num = 1;
+            //var variantid = '1_';
+            var EmptyNamePH = '(Optionaler Name für die Variante)';
+            var NewVariant = 'Variante ';
+            var EnableLog = true; /* used in Log() function*/
+            var DisablePopupNotice = false;
+
+            var BTIsEditable = true;
+            var BTCurrentTab = 0;
+            var BTRenamingIndex = 0;
+            var BTMenuWidth = 150;
+            var BTTestType = "visual";//or split
+            var BTTenant = 'blacktri';
+            /* todo not sure what this is*/
+            var BTCurrentApproach = 1;
+            var BTParentUrl = '';
+            var BTEditorUrl = 'https://www.blacktri.com/editor/';
+
+            var BTeditorVars = {"isEditor":true,"view":"wizard","FrameEditorBaseUrl":"https:\/\/opt.blacktri.com\/?blacktriurl=","DocDomain":"blacktri.com","conversionGoalsParams":"{\"6\":[\"Page 1\",\"Page 2\",\"Page 3\"],\"5\":[\"viewProduct\",\"insertToBasket\",\"order\"]}","ClientId":false,"BaseSslUrl":"https:\/\/www.blacktri.com\/","goalsData":[],"CollectionId":false,"testPageUrl":"https:\/\/www.blacktri.com\/lpc\/lcd\/","test_url":"http:\/\/www.eckhardschneider.de\/blacktritest\/testpage_live.html","control_pattern":"http:\/\/www.eckhardschneider.de\/blacktritest\/testpage_live.html","enterNameText":"(Optionaler Name f\u00fcr die Variante)","lang":"de","is_etracker":false,"unload_message":"Wollen Sie die Seite wirklich verlassen? \u00c4nderungen gehen m\u00f6glicherweise verloren!","add_ons":{"styles_edit":{"active":true}},"css_reset":"https:\/\/www.blacktri.com\/css\/editor\/text-editor-reset.css","EditorBaseURL":"https:\/\/opt.blacktri.com\/","EditorProxyURL":"https:\/\/opt.blacktri.com\/btproxy\/","show_sms":false,"EditorRelURL":"","EditorDeviceTypes":{"Smartphone":{"iphone5":{"name":"Apple Iphone 5","ua":"Mozilla\/5.0 (iPhone; CPU iPhone OS 7_0 like Mac OS X; en-us) AppleWebKit\/537.51.1 (KHTML, like Gecko) Version\/7.0 Mobile\/11A465 Safari\/9537.53","width":320,"height":568,"dp":2},"iphone6":{"name":"Apple Iphone 6","ua":"Mozilla\/5.0 (iPhone; CPU iPhone OS 8_0 like Mac OS X) AppleWebKit\/600.1.3 (KHTML, like Gecko) Version\/8.0 Mobile\/12A4345d Safari\/600.1.4","width":375,"height":667,"dp":2},"s3":{"name":"Samsung Galaxy SIII","ua":"Mozilla\/5.0 (Linux; U; Android 4.0; en-us; GT-I9300 Build\/IMM76D) AppleWebKit\/534.30 (KHTML, like Gecko) Version\/4.0 Mobile Safari\/534.30","width":360,"height":640,"dp":2},"note3":{"name":"Samsung Galaxy Note 3","ua":"Mozilla\/5.0 (Linux; U; Android 4.3; en-us; SM-N900T Build\/JSS15J) AppleWebKit\/534.30 (KHTML, like Gecko) Version\/4.0 Mobile Safari\/534.30","width":360,"height":640,"dp":3}},"Tablet":{"ipad":{"name":"Apple Ipad","ua":"Mozilla\/5.0 (iPad; CPU OS 7_0 like Mac OS X) AppleWebKit\/537.51.1 (KHTML, like Gecko) Version\/7.0 Mobile\/11A465 Safari\/9537.53","width":1024,"height":768,"dp":2},"nexus7":{"name":"Google Nexus 7","ua":"Mozilla\/5.0 (Linux; Android 4.3; Nexus 7 Build\/JSS15Q) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/42.0.2307.2 Mobile Safari\/537.36","width":960,"height":600,"dp":2}},"Desktop":{"desktop":{"name":"Desktop computer","ua":"Mozilla\/5.0 (Windows NT 6.2; WOW64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/30.0.1599.17 Safari\/537.36","width":0,"height":0,"dp":1}}},"EditorDeviceType":"desktop","isMpt":false,"pagePrefix":"Seite ","undo_text":{"default":"\u00c4nderung widerrufen","actions":{"rename_variant":"R\u00fcckg\u00e4ngig: Variante umbenennen","delete_variant":"R\u00fcckg\u00e4ngig: Variante l\u00f6schen","style_edit":"R\u00fcckg\u00e4ngig: Stile bearbeiten","html_edit":"R\u00fcckg\u00e4ngig: HTML bearbeiten","text_edit":"R\u00fcckg\u00e4ngig: Text bearbeiten","move_element":"R\u00fcckg\u00e4ngig: Element verschieben","hide_element":"R\u00fcckg\u00e4ngig: Element verbergen","remove_element":"R\u00fcckg\u00e4ngig: Element entfernen","edit_javascript":"R\u00fcckg\u00e4ngig: Javascript bearbeiten","edit_css":"R\u00fcckg\u00e4ngig: CSS bearbeiten","edit_link":"R\u00fcckg\u00e4ngig: Link bearbeiten","edit_image":"R\u00fcckg\u00e4ngig: Bild-URL bearbeiten","save_sms":"R\u00fcckg\u00e4ngig: SmartMessage speichern","delete_sms":"R\u00fcckg\u00e4ngig: Smartmessage l\u00f6schen","select_rule":"Undo select perso rule","rearrange":"[Undo rearrange element]"}},"visitor_redirects":{"proceed":"https:\/\/www.blacktri.com\/de\/registrieren\/","cancel":"http:\/\/www.blacktri.com\/de\/"}};
+
+var btoIconPath = "/js/nicEdit/nicEditorIcons.gif";
+
+        </script>
+                <link rel="stylesheet" href="https://www.blacktri.com/css/style.css" type="text/css" />
+<link rel="stylesheet" href="https://www.blacktri.com/css/admin.css" type="text/css" />
+<link rel="stylesheet" href="https://www.blacktri.com/css/admin.css-lower_editor_z-Indexes.css" type="text/css" />
+<link rel="stylesheet" href="https://www.blacktri.com/css/editor-reset.css" type="text/css" />
+<link rel="stylesheet" href="https://www.blacktri.com/js/jquery-ui-1.9.1.custom/css/ui-lightness/jquery-ui.css" type="text/css" />
+<link rel="stylesheet" href="https://www.blacktri.com/js/codemirror-4.0/lib/codemirror.css" type="text/css" />
+<link rel="stylesheet" href="https://www.blacktri.com/js/codemirror-4.0/addon/hover/text-hover.css" type="text/css" />
+<link rel="stylesheet" href="https://www.blacktri.com/js/fancybox/jquery.fancybox-1.3.4.css" type="text/css" />
+<link rel="stylesheet" href="https://www.blacktri.com/css/popup_new.css" type="text/css" />
+<link rel="stylesheet" href="https://www.blacktri.com/css/validationEngine.jquery.css" type="text/css" />
+<link rel="stylesheet" href="https://www.blacktri.com/css/editor.css" type="text/css" />
+<link rel="stylesheet" href="https://www.blacktri.com/css/editor.css-lower_editor_z-Indexes.css" type="text/css" />
+<link rel="stylesheet" href="https://www.blacktri.com/css/editor/new_editor.css" type="text/css" />
+<link rel="stylesheet" href="https://www.blacktri.com/css/editor/perso-rules.css" type="text/css" />
+<link rel="stylesheet" href="https://www.blacktri.com/css/font-awesome/css/font-awesome.min.css" type="text/css" />
+<link rel="stylesheet" href="https://www.blacktri.com/js/jQuery-colorpicker/css/colorpicker.css" type="text/css" />
+<link rel="stylesheet" href="https://www.blacktri.com/js/chromoselector-2.1.5/chromoselector.css" type="text/css" />
+<link rel="stylesheet" href="https://www.blacktri.com/js/tooltips/css/jquery.powertip.min.css" type="text/css" />
+<link rel="stylesheet" href="https://www.blacktri.com/js/datepicker/css/datepicker.css" type="text/css" />
+
+        <script src="https://www.blacktri.com/js/jQuery-lib/jQuery-1.8.3.min.js" type="text/javascript"></script>
+
+        <script src="https://www.blacktri.com/js/console.polyfill.js" type="text/javascript"></script>
+<script src="https://www.blacktri.com/js/jquery.Storage.js" type="text/javascript"></script>
+<script src="https://www.blacktri.com/js/jquery.json-2.3.js" type="text/javascript"></script>
+<script src="https://www.blacktri.com/js/jquery-ui-1.9.1.custom/js/jquery-ui-1.9.1.custom.min.js" type="text/javascript"></script>
+<script src="https://www.blacktri.com/js/codemirror-4.0/lib/codemirror.js" type="text/javascript"></script>
+<script src="https://www.blacktri.com/js/codemirror-4.0/mode/xml/xml.js" type="text/javascript"></script>
+<script src="https://www.blacktri.com/js/codemirror-4.0/mode/javascript/javascript.js" type="text/javascript"></script>
+<script src="https://www.blacktri.com/js/codemirror-4.0/mode/css/css.js" type="text/javascript"></script>
+<script src="https://www.blacktri.com/js/codemirror-4.0/mode/htmlmixed/htmlmixed.js" type="text/javascript"></script>
+<script src="https://www.blacktri.com/js/codemirror-4.0/addon/hover/text-hover.js" type="text/javascript"></script>
+<script src="https://www.blacktri.com/jsi18n/jqueryValidationEngine.js" type="text/javascript"></script>
+<script src="https://www.blacktri.com/js/jquery.validationEngine.js" type="text/javascript"></script>
+<script src="https://www.blacktri.com/js/fancybox/jquery.fancybox-1.3.4.js" type="text/javascript"></script>
+<script src="https://www.blacktri.com/js/fancybox/jquery.easing-1.3.pack.js" type="text/javascript"></script>
+<script src="https://www.blacktri.com/js/popup.js" type="text/javascript"></script>
+<script src="https://www.blacktri.com/js/jquery.ba-postmessage.js" type="text/javascript"></script>
+<script src="https://www.blacktri.com/js/BT-editor/main-new-editor.js" type="text/javascript"></script>
+<script src="https://www.blacktri.com/js/BT-common/BT-clickgoals.js" type="text/javascript"></script>
+<script src="https://www.blacktri.com/js/BT-common/BT-additionalconfig.js" type="text/javascript"></script>
+<script src="https://www.blacktri.com/js/jHtmlArea-0.8.0.ExamplePlusSource/scripts/jHtmlArea-0.8.js" type="text/javascript"></script>
+<script src="https://www.blacktri.com/js/BT-editor/BT-editor-new.js" type="text/javascript"></script>
+<script src="https://www.blacktri.com/js/BT-editor/BT-editor-codeEdit.js" type="text/javascript"></script>
+<script src="https://www.blacktri.com/js/BT-editor/BT-history-editor.js" type="text/javascript"></script>
+<script src="https://www.blacktri.com/js/BT-editor/BT-editor-sms-manage.js" type="text/javascript"></script>
+<script src="https://www.blacktri.com/js/BT-editor/BT-editor-browsemode.js" type="text/javascript"></script>
+<script src="https://www.blacktri.com/js/tooltips/jquery.powertip.min.js" type="text/javascript"></script>
+<script src="https://www.blacktri.com/js/BT-editor/perso/perso-rules.js" type="text/javascript"></script>
+<script src="https://www.blacktri.com/js/BT-editor/BT-editor-rearrange.js" type="text/javascript"></script>
+<script src="https://www.blacktri.com/js/BT-editor/BT-editor-devicetype.js" type="text/javascript"></script>
+<script src="https://www.blacktri.com/js/BT-common/BT-urlpattern.js" type="text/javascript"></script>
+<script src="https://www.blacktri.com/js/BT-common/BT-multipagetest.js" type="text/javascript"></script>
+<script src="https://www.blacktri.com/js/datepicker/js/datepicker.js" type="text/javascript"></script>
+<script src="https://www.blacktri.com/js/dash_testpage_wizards/BT-editor-additional-scripts.js" type="text/javascript"></script>
+<script src="https://www.blacktri.com/js/jQuery-colorpicker/js/colorpicker.js" type="text/javascript"></script>
+<script src="https://www.blacktri.com/js/chromoselector-2.1.5/chromoselector.min.js" type="text/javascript"></script>
+<script src="https://www.blacktri.com/js/BT-editor/editor-resources/html-tags-data-temporary.js" type="text/javascript"></script>
+<script src="https://www.blacktri.com/js/BT-editor/editor-resources/style-properties.js" type="text/javascript"></script>
+<script src="https://www.blacktri.com/js/BT-editor/BT-styles-editor.js" type="text/javascript"></script>
+
+
+            <script type="text/javascript">
+                      var _gaq = _gaq || [];
+                      _gaq.push(['_setAccount', 'UA-1870369-3']);
+                      _gaq.push(['_trackPageview']);
+
+                      (function() {
+                          var ga = document.createElement('script');
+                          ga.type = 'text/javascript';
+                          ga.async = true;
+                          ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                          var s = document.getElementsByTagName('script')[0];
+                          s.parentNode.insertBefore(ga, s);
+                      })();
+            </script>
+            <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,300,500,700" />
+        
+
+
+        
+                    <link type="text/css" rel="stylesheet" href="https://www.blacktri.com/css/blacktri.css" />
+
+    </head>
+    <body class="blacktri" id="editor_page"><div style="width: 0px; height: 0px; position: absolute; overflow: visible; top: 0px; left: 0px;"><div class="ui-cs-chromoselector" style="border-radius: 0px 0px 0px 90px; width: 180px; display: none; top: 8px; left: 0px;"><div class="ui-cs-supercontainer"><div style="width: 180px;" class="ui-cs-container"><div class="ui-cs-preview-container"><div class="ui-cs-preview-widget" style="overflow: hidden; box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.5);"><canvas style="display: block; height: 25px; width: 500px;" height="25" width="500"></canvas><div class="ui-cs-preview-color" style="width: 100%; background-color: rgb(0, 0, 0); position: relative; top: -25px; height: 25px;"></div></div></div><div class="ui-cs-widget" style="position: relative; width: 180px; height: 180px;"><canvas height="180" width="180" style="position: absolute; width: 100%; height: 100%;"></canvas><canvas height="180" width="180" style="position: absolute; width: 100%; height: 100%;"></canvas><canvas height="180" width="180" style="position: absolute; width: 100%; height: 100%;"></canvas><canvas height="180" width="180" style="position: absolute; width: 100%; height: 100%;"></canvas></div></div><canvas style="height: 20px; width: 20px; position: absolute; bottom: 0px; right: 0px;" height="20" width="20" class="ui-cs-resizer"></canvas><div style="clear: both;"></div></div></div></div><div style="width: 0px; height: 0px; position: absolute; overflow: visible; top: 0px; left: 0px;"><div class="ui-cs-chromoselector" style="border-radius: 0px 0px 0px 90px; width: 180px; display: none; top: 8px; left: 0px;"><div class="ui-cs-supercontainer"><div style="width: 180px;" class="ui-cs-container"><div class="ui-cs-preview-container"><div class="ui-cs-preview-widget" style="overflow: hidden; box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.5);"><canvas style="display: block; height: 25px; width: 500px;" height="25" width="500"></canvas><div class="ui-cs-preview-color" style="width: 100%; background-color: rgb(0, 0, 0); position: relative; top: -25px; height: 25px;"></div></div></div><div class="ui-cs-widget" style="position: relative; width: 180px; height: 180px;"><canvas height="180" width="180" style="position: absolute; width: 100%; height: 100%;"></canvas><canvas height="180" width="180" style="position: absolute; width: 100%; height: 100%;"></canvas><canvas height="180" width="180" style="position: absolute; width: 100%; height: 100%;"></canvas><canvas height="180" width="180" style="position: absolute; width: 100%; height: 100%;"></canvas></div></div><canvas style="height: 20px; width: 20px; position: absolute; bottom: 0px; right: 0px;" height="20" width="20" class="ui-cs-resizer"></canvas><div style="clear: both;"></div></div></div></div><div style="width: 0px; height: 0px; position: absolute; overflow: visible; top: 0px; left: 0px;"><div class="ui-cs-chromoselector" style="border-radius: 0px 0px 0px 90px; width: 180px; display: none; top: 8px; left: 0px;"><div class="ui-cs-supercontainer"><div style="width: 180px;" class="ui-cs-container"><div class="ui-cs-preview-container"><div class="ui-cs-preview-widget" style="overflow: hidden; box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.5);"><canvas style="display: block; height: 25px; width: 500px;" height="25" width="500"></canvas><div class="ui-cs-preview-color" style="width: 100%; background-color: rgb(0, 0, 0); position: relative; top: -25px; height: 25px;"></div></div></div><div class="ui-cs-widget" style="position: relative; width: 180px; height: 180px;"><canvas height="180" width="180" style="position: absolute; width: 100%; height: 100%;"></canvas><canvas height="180" width="180" style="position: absolute; width: 100%; height: 100%;"></canvas><canvas height="180" width="180" style="position: absolute; width: 100%; height: 100%;"></canvas><canvas height="180" width="180" style="position: absolute; width: 100%; height: 100%;"></canvas></div></div><canvas style="height: 20px; width: 20px; position: absolute; bottom: 0px; right: 0px;" height="20" width="20" class="ui-cs-resizer"></canvas><div style="clear: both;"></div></div></div></div><div style="width: 0px; height: 0px; position: absolute; overflow: visible; top: 0px; left: 0px;"><div class="ui-cs-chromoselector" style="border-radius: 0px 0px 0px 90px; width: 180px; display: none; top: 8px; left: 0px;"><div class="ui-cs-supercontainer"><div style="width: 180px;" class="ui-cs-container"><div class="ui-cs-preview-container"><div class="ui-cs-preview-widget" style="overflow: hidden; box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.5);"><canvas style="display: block; height: 25px; width: 500px;" height="25" width="500"></canvas><div class="ui-cs-preview-color" style="width: 100%; background-color: rgb(0, 0, 0); position: relative; top: -25px; height: 25px;"></div></div></div><div class="ui-cs-widget" style="position: relative; width: 180px; height: 180px;"><canvas height="180" width="180" style="position: absolute; width: 100%; height: 100%;"></canvas><canvas height="180" width="180" style="position: absolute; width: 100%; height: 100%;"></canvas><canvas height="180" width="180" style="position: absolute; width: 100%; height: 100%;"></canvas><canvas height="180" width="180" style="position: absolute; width: 100%; height: 100%;"></canvas></div></div><canvas style="height: 20px; width: 20px; position: absolute; bottom: 0px; right: 0px;" height="20" width="20" class="ui-cs-resizer"></canvas><div style="clear: both;"></div></div></div></div><div style="width: 0px; height: 0px; position: absolute; overflow: visible; top: 0px; left: 0px;"><div class="ui-cs-chromoselector" style="border-radius: 0px 0px 0px 90px; width: 180px; display: none; top: 8px; left: 0px;"><div class="ui-cs-supercontainer"><div style="width: 180px;" class="ui-cs-container"><div class="ui-cs-preview-container"><div class="ui-cs-preview-widget" style="overflow: hidden; box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.5);"><canvas style="display: block; height: 25px; width: 500px;" height="25" width="500"></canvas><div class="ui-cs-preview-color" style="width: 100%; background-color: rgb(0, 0, 0); position: relative; top: -25px; height: 25px;"></div></div></div><div class="ui-cs-widget" style="position: relative; width: 180px; height: 180px;"><canvas height="180" width="180" style="position: absolute; width: 100%; height: 100%;"></canvas><canvas height="180" width="180" style="position: absolute; width: 100%; height: 100%;"></canvas><canvas height="180" width="180" style="position: absolute; width: 100%; height: 100%;"></canvas><canvas height="180" width="180" style="position: absolute; width: 100%; height: 100%;"></canvas></div></div><canvas style="height: 20px; width: 20px; position: absolute; bottom: 0px; right: 0px;" height="20" width="20" class="ui-cs-resizer"></canvas><div style="clear: both;"></div></div></div></div><div style="width: 0px; height: 0px; position: absolute; overflow: visible; top: 0px; left: 0px;"><div class="ui-cs-chromoselector" style="border-radius: 0px 0px 0px 90px; width: 180px; display: none; top: 8px; left: 0px;"><div class="ui-cs-supercontainer"><div style="width: 180px;" class="ui-cs-container"><div class="ui-cs-preview-container"><div class="ui-cs-preview-widget" style="overflow: hidden; box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.5);"><canvas style="display: block; height: 25px; width: 500px;" height="25" width="500"></canvas><div class="ui-cs-preview-color" style="width: 100%; background-color: rgb(0, 0, 0); position: relative; top: -25px; height: 25px;"></div></div></div><div class="ui-cs-widget" style="position: relative; width: 180px; height: 180px;"><canvas height="180" width="180" style="position: absolute; width: 100%; height: 100%;"></canvas><canvas height="180" width="180" style="position: absolute; width: 100%; height: 100%;"></canvas><canvas height="180" width="180" style="position: absolute; width: 100%; height: 100%;"></canvas><canvas height="180" width="180" style="position: absolute; width: 100%; height: 100%;"></canvas></div></div><canvas style="height: 20px; width: 20px; position: absolute; bottom: 0px; right: 0px;" height="20" width="20" class="ui-cs-resizer"></canvas><div style="clear: both;"></div></div></div></div><div style="width: 0px; height: 0px; position: absolute; overflow: visible; top: 0px; left: 0px;"><div class="ui-cs-chromoselector" style="border-radius: 0px 0px 0px 90px; width: 180px; display: none; top: 8px; left: 0px;"><div class="ui-cs-supercontainer"><div style="width: 180px;" class="ui-cs-container"><div class="ui-cs-preview-container"><div class="ui-cs-preview-widget" style="overflow: hidden; box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.5);"><canvas style="display: block; height: 25px; width: 500px;" height="25" width="500"></canvas><div class="ui-cs-preview-color" style="width: 100%; background-color: rgb(0, 0, 0); position: relative; top: -25px; height: 25px;"></div></div></div><div class="ui-cs-widget" style="position: relative; width: 180px; height: 180px;"><canvas height="180" width="180" style="position: absolute; width: 100%; height: 100%;"></canvas><canvas height="180" width="180" style="position: absolute; width: 100%; height: 100%;"></canvas><canvas height="180" width="180" style="position: absolute; width: 100%; height: 100%;"></canvas><canvas height="180" width="180" style="position: absolute; width: 100%; height: 100%;"></canvas></div></div><canvas style="height: 20px; width: 20px; position: absolute; bottom: 0px; right: 0px;" height="20" width="20" class="ui-cs-resizer"></canvas><div style="clear: both;"></div></div></div></div>
+
+<script type="text/javascript">
+    var bt_clickgoals_vars = {
+        goalType: parseInt(15),
+        goalPrefix: "Klick: ",
+        pleaseSelect: "Bitte wählen...",
+        testtypeVisual: parseInt(3),
+        testtypeMultipage: parseInt(6)
+    };
+</script>
+        
+<div id="editor_wrap">
+    <!--etracker borders-->
+    <div class="editor_border top_border" style=""></div>
+    <div class="editor_border left_border"></div>
+    <div class="editor_border right_border"></div>
+    <div class="editor_border bottom_border" style=""></div>
+
+
+    <div id="editor_top">
+        <input type="hidden" value="-1" id="allowed-variants" />
+<div class="editor_url_container">
+    <h4>Visueller Editor</h4>
+    <div id="user_url">
+        <div id="user_url_bg">
+            <span class="user_url_edit">
+                http://www.eckhardschneider.de/blacktritest/testpage_live.html            </span>
+            <i class="fa fa-pencil url_edit_icon url_pencil button"></i>
+            <div class="clear"></div>
+        </div>
+        <input type="text" value="http://www.eckhardschneider.de/blacktritest/testpage_live.html" id="user_url_input" class="edit_project_url" />
+        <i id="url_save" class="fa fa-check url_edit_icon edit_project_url button" tabindex="0"></i>
+        <i id="url_cancel" class="fa fa-close url_edit_icon edit_project_url button" tabindex="0"></i>
+    </div>
+    <div class="clear"></div>
+</div>
+<div class="clear"></div>
+
+<form onsubmit="return false;" method="post" name="frmVisualABStep2" id="frmVisualABStep2">
+        <div class="confirmation-field editor_top_buttons ">
+
+        
+                    <!--Visitors-->
+            <!-- <a class="button ok" onclick="editorFullScreen(false);alert('TODO setup visitor redirect')">visitor proceed</a>-->
+            <div class="ctrl-buttons">
+                
+                <div id="etracker-2-4-links" class="links">
+                    <a class="editor_back" onclick="BlackTri.redirect('visitor_cancel')" href="javascript:void(0)">Abbrechen</a>
+                </div>
+
+                <input type="submit" value="Jetzt BlackTri 30 Tage testen" onclick="visitorProceed()" class="button ok" style="float: right" />
+            </div>
+        
+        <div id="switch_mode">
+            <input type="radio" onchange="SwitchMode('editor')" value="editor" name="editor_mode" id="editor_mode_editor" checked="checked" />
+            <label class="first_radio" for="editor_mode_editor">Bearbeiten</label>			
+            <input type="radio" onchange="SwitchMode('browse')" value="browse" name="editor_mode" id="editor_mode_browse" />
+            <label class="second_radio" for="editor_mode_browse">Navigieren</label>
+        </div>
+
+        
+        <div class="top-panel-selector left-floating">
+            <label>Seite mit Endgerät öffnen:</label>
+            <select id="device_select" class="top-panel-dropdown">
+                                    <optgroup label="Smartphone">
+                                                    <option value="iphone5">Apple Iphone 5 (320x568)</option>
+                                                    <option value="iphone6">Apple Iphone 6 (375x667)</option>
+                                                    <option value="s3">Samsung Galaxy SIII (360x640)</option>
+                                                    <option value="note3">Samsung Galaxy Note 3 (360x640)</option>
+                                    
+                                        </optgroup><optgroup label="Tablet">
+                                                    <option value="ipad">Apple Ipad (1024x768)</option>
+                                                    <option value="nexus7">Google Nexus 7 (960x600)</option>
+                                    
+                                        </optgroup><optgroup label="Desktop">
+                                                    <option selected="selected" value="desktop">Desktop computer</option>
+                                    
+                                </optgroup></select>
+        </div>
+
+    </div>
+</form>        <div class="help_box">
+            <a target="_blank" class="help_link" href="https://blacktri-jira.atlassian.net/wiki/x/bgB7AQ">(Visueller Editor Hilfe)</a>        </div>
+        <div style="position:absolute; right:300px; top:5px;" class="zone_right">
+        </div>
+        <div class="tabs_main" id="menu_tabs">
+            <div class="left disabled"></div>
+            <div class="right disabled"></div>
+            <div class="tabs_container">
+                <div class="zone_tabs" id="variant_tabs" style="width: 208px;">
+                    <div id="variant_0" class="tab default original"><a>Originalseite</a></div>
+                    <div class="tab selected" id="variant_1"><a title="Neue Variante">Variante  1</a><div class="menu_container">
+                <div class="menu">
+
+            <a onclick="BlackTri.history.restore()" class="history_undo disabled">Änderung widerrufen</a>
+            <div class="menu_separator"></div>
+
+            <a onclick="RenameVisualABVariant(this)">Variante umbenennen</a>
+            <a onclick="OpenDeleteVariantPopup(this)" class="delete_variant">Variante löschen</a>
+            <div class="menu_separator"></div>
+
+            <span class="selected_tab_only">
+                <a onclick="BlackTri.codeEdit.js()" href="javascript:void(0)" class="">
+                    Eigenes Javascript                </a>
+                <a onclick="BlackTri.codeEdit.css()" class="">
+                    Eigenes CSS                </a>
+            </span>
+
+                        <div class="menu_separator menu_personalization_container"></div>
+
+            <div class="menu_personalization_container">
+                <h4 class="menu_perso_title">Segmentierung festlegen:</h4>
+                <a id="variant_rule_0" class="perso_wizard_link perso_add_rule" href="javascript:void(0)">
+                    (nicht personalisiert)                </a>
+            </div>
+
+        </div>
+    </div></div><div class="tab new"><a title="Neue Variante"> + </a></div>
+                </div>
+            </div>
+        </div>
+        <div style="top: 0; left: 0; right: 0; bottom: 0; opacity: .6" class="client_mask"></div>
+        <div id="rearrange_control">
+
+            <div><strong>Elemente umsortieren</strong></div>
+            <div>Ziehen Sie das Element mit der Maus an die gewünschte Position.</div>
+            <div style="margin-left: 0px;" class="ctrl-buttons">
+                <div class="links" id="etracker-2-4-links">
+                    <a href="javascript:void(0)" onclick="BlackTri.rearrange.cancel()" class="editor_back">Abbrechen</a>
+                </div>
+                <input type="button" class="button ok" onclick="BlackTri.rearrange.save();" value="Speichern" disabled="disabled" id="save_rearrange" />
+            </div>
+        </div>
+
+    </div>
+
+    <div id="editor_iframe_wrap">
+        <!-- MASKS For Rearrange-->
+        <div class="client_mask client_mask_left"></div>
+        <div class="client_mask client_mask_top"></div>
+        <div class="client_mask client_mask_right"></div>
+        <div class="client_mask client_mask_bottom"></div>
+        <div class="client_border element_border vertical" id="elem_border_left"></div>
+        <div class="client_border element_border  horizontal" id="elem_border_top"></div>
+        <div class="client_border element_border vertical" id="elem_border_right"></div>
+        <div class="client_border element_border horizontal" id="elem_border_bottom"></div>
+
+        <div class="client_border rearrange_border vertical" id="rearrange_border_left"></div>
+        <div class="client_border rearrange_border  horizontal" id="rearrange_border_top"></div>
+        <div class="client_border rearrange_border vertical" id="rearrange_border_right"></div>
+        <div class="client_border rearrange_border horizontal" id="rearrange_border_bottom"></div>
+
+
+
+        <iframe frameborder="0" src="https://opt.blacktri.com/?blacktriurl=http%3A%2F%2Fwww.eckhardschneider.de%2Fblacktritest%2Ftestpage_live.html&amp;client=&amp;device=desktop&amp;_1468843220" style="width:100%; height:100%;" marginwidth="0" marginheight="0" id="frame_editor" name="frame_editor" class="frames" scrolling="auto"></iframe>
+
+
+        <div style="width: 100%; height: 100%; display: none;" class="editor_overlayer"></div>
+
+        <div class="editor_proxy" style="display: block;"><div class="editor_proxy_scroll" style="height: 558px;"></div><div class="editor_element_outline" style="left: 2px; top: 2px; width: 1393px; height: 39px; display: block;"></div><div style="position: absolute; top: 9px; left: -1px; height: 0px;" id="tag_ident"><span style="background: #095377;position: absolute; top:-8px;left: 0;color:#ffffff; font-weight: bold; font-size: 11px; padding: 0 2px;" id="tag_ident_tagname">&lt;h1&gt;</span></div></div>
+        <div id="frame_editor_ph"></div>
+        <!-- Used for moving elements-->
+        <div class="editor_action                  special-green-popup" style="display: block;">
+
+            <div id="BTMoveFrame">
+                <div class="BTSkipElement BTRemovable" id="BTMoveElementControls">
+                    <img onclick="window.BlackTri.editorMoveElementSaveHtml()" class="BTSaveButton" />
+                    <img onclick="window.BlackTri.editorMoveElementCancel()" class="BTCancelButton" />
+                </div>
+            </div>
+
+            <div id="BTMouseOverEditorMenu" style="left: 10px; top: 10px; display: none;">
+                <!-- Blacktri header for menu start -->
+
+                <div class="BTMouseOverEditorMenu_header">&lt;h1&gt; Headline</div>
+
+                <a onclick="BlackTri.codeEdit.html()" href="javascript://">HTML bearbeiten</a>
+                <a onclick="BlackTri.codeEdit.text()" href="javascript://">Text bearbeiten</a>
+                <a class="st_editor_open" href="javascript://">CSS bearbeiten</a>
+                <a data-tag="a" class="tag_specific" onclick="BlackTri.editUrlAttribute('link')" href="javascript://">Link bearbeiten</a>
+                <a data-tag="img" class="tag_specific" onclick="BlackTri.editUrlAttribute('image')" href="javascript://">Bild-URL bearbeiten</a>
+                <a id="editor_action_clickgoal" href="javascript://">Klicks tracken</a>
+                <a onclick="window.BlackTri.menuActionHideElement()" class="no_sms" href="javascript://">Element verbergen</a>
+                <a onclick="window.BlackTri.menuActionRemoveElement()" class="no_sms" href="javascript://">Element entfernen</a>
+                <a onclick="window.BlackTri.menuActionMoveElement()" class="no_sms" href="javascript://">Element verschieben</a>
+                <a onclick="BlackTri.rearrange.init()" class="no_sms" href="javascript://">Elemente umsortieren</a>
+                <a onclick="BlackTri.activateParentElement()" href="javascript://" class="menu_no_close disabled" id="parent_selector">Elternelement auswählen</a>
+            </div>    
+        </div>    
+    </div>
+    
+    <!-- Confirm keep editor changes CSS names are kept to avoid repeated code. -->
+    <div class="perso_confirm_popup perso_rule_overlay blacktri" id="keep_changes_overlay"></div>
+    <div class="perso_confirm_popup perso_rule_wrapper blacktri" id="keep_changes_wrapper">
+        <h1 class="blacktri">Änderungen behalten?</h1>
+        <p>Sie haben eine oder mehrere Varianten Ihres Projektes im Visuellen Editor 
+    bearbeitet, diese Änderungen sind möglicherweise auf der neuen Seite nicht mehr anwendbar. 
+    Möchten Sie die Änderungen dennoch behalten, oder sollen sie verworfen werden?</p>
+        <div class="clear"></div>
+
+        <div class="perso_rule_btn_container blacktri">
+            <input type="button" value="Änderungen verwerfen" id="editor_undo_changes" class="perso_rule_btn perso_rule_cancelbtn blacktri" />
+            <input type="button" value="Änderungen behalten" id="editor_keep_changes" class="perso_rule_btn perso_rule_savebtn blacktri" />
+        </div>
+    </div>
+
+
+    <!-- Default Loading popup-->
+    <div class="editor_popup_loading editor_popup_message1" id="editor_loading_message" style="display: none;">
+        <a class="close_popup" href="javascript:;" onclick="/*RemoveEditorPreloader(); EditorLoaded(true);*/"></a>
+                    <div><b>Seite wird geladen...</b></div>
+                <div>Bitte einen Moment Geduld, wir laden die Seite und bereiten sie zum Bearbeiten auf.</div>
+    </div>
+
+
+    <div class="preloading_message" style="display: none;">
+        Sie können die Seite jetzt bearbeiten. Einige Elemente werden noch nachgeladen.    </div>
+
+</div><!--End editor wrap-->
+
+
+<div class="menu_template hide">
+    <div class="menu_container">
+                <div class="menu">
+
+            <a onclick="BlackTri.history.restore()" class="history_undo disabled">Änderung widerrufen</a>
+            <div class="menu_separator"></div>
+
+            <a onclick="RenameVisualABVariant(this)">Variante umbenennen</a>
+            <a onclick="OpenDeleteVariantPopup(this)" class="delete_variant">Variante löschen</a>
+            <div class="menu_separator"></div>
+
+            <span class="selected_tab_only">
+                <a onclick="BlackTri.codeEdit.js()" href="javascript:void(0)" class="">
+                    Eigenes Javascript                </a>
+                <a onclick="BlackTri.codeEdit.css()" class="">
+                    Eigenes CSS                </a>
+            </span>
+
+                        <div class="menu_separator menu_personalization_container"></div>
+
+            <div class="menu_personalization_container">
+                <h4 class="menu_perso_title">Segmentierung festlegen:</h4>
+                <a id="variant_rule_0" class="perso_wizard_link perso_add_rule" href="javascript:void(0)">
+                    (nicht personalisiert)                </a>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div style="display: none">
+    
+</div>
+<div id="full_editor_overlay"></div>
+<div id="sms_ui">
+    <iframe src="https://www.blacktri.com/editor/sms" id="sms_ui_frame"></iframe>
+</div><div id="BTFactorEditPopup" class="ui-draggable ui-resizable" style="width: 622px; height: 324px; display: block;">
+
+    <label data-code="html" class="codeEdit-title BTFactorEditPopupHtml BTEnableDraggable" style="display: none;">HTML bearbeiten</label>
+    <label data-code="css" class="codeEdit-title BTFactorEditPopupCss BTEnableDraggable" style="display: none;">CSS bearbeiten</label>
+    <label data-code="javascript" class="codeEdit-title BTFactorEditPopupJs BTEnableDraggable" style="display: none;">Javascript bearbeiten</label>
+    <label data-code="text" class="codeEdit-title BTFactorEditPopupJs BTEnableDraggable" style="display: block;">Text bearbeiten</label>
+
+    <div class="clear"></div>
+    <div id="code_blocks" style="height: 224px;">
+        <div id="code_editing" style="display: none;">
+            <textarea class="BTHtmlEditor textbox" name="BTCodeEditor" id="BTCodeEditor" resize="none" style="display: none;"></textarea><div class="CodeMirror cm-s-default CodeMirror-wrap" style="width: 598px; height: 224px;"><div style="overflow: hidden; position: relative; width: 3px; height: 0px;"><textarea style="position: absolute; padding: 0px; width: 1px; height: 1em; outline: medium none;" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0"></textarea></div><div class="CodeMirror-hscrollbar" style="left: 0px;"><div style="height: 100%; min-height: 1px;"></div></div><div class="CodeMirror-vscrollbar"><div style="min-width: 1px;"></div></div><div class="CodeMirror-scrollbar-filler"></div><div class="CodeMirror-gutter-filler"></div><div class="CodeMirror-scroll" tabindex="-1" draggable="true"><div class="CodeMirror-sizer" style="margin-left: 0px;"><div style="position: relative;"><div class="CodeMirror-lines"><div style="position: relative; outline: medium none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-cursors"></div><div class="CodeMirror-code"></div></div></div></div></div><div style="position: absolute; height: 30px; width: 1px;"></div><div class="CodeMirror-gutters"><div class="CodeMirror-gutter CodeMirror-linenumbers" style="width: 1px;"></div></div></div></div>
+        </div>
+        <div style="" id="html_editing">
+            <div class="jHtmlArea" style="width: 100%; height: 224px;"><div class="ToolBar" style="width: 600px;"><ul></ul></div><div><iframe src="https://www.blacktri.com/editor/textEditIframe" id="textEditIframe" style="height: 224px; width: 100%;" name="textEditIframe"></iframe></div><textarea class="BTHtmlEditor textbox" name="BTHtmlEditor" id="BTHtmlEditor" resize="none" style="display: none;"></textarea></div>
+        </div>
+    </div>
+
+    <div class="ctrl-buttons">
+        <input type="button" onclick="window.BlackTri.editorCancel()" value="Abbrechen" class="BtEditorButton cancel" />
+        <input type="button" onclick="BlackTri.codeEdit.save()" value="Speichern" class="BtEditorButton ok" />
+
+    </div>
+    <div style="clear: both; height: 15px;"></div>
+<div class="ui-resizable-handle ui-resizable-e" style="z-index: 1000;"></div><div class="ui-resizable-handle ui-resizable-s" style="z-index: 1000;"></div><div class="ui-resizable-handle ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se" style="z-index: 1000;"></div></div>
+
+<div class="editor_popup_loading editor_popup_message2" style="display: none;">
+    <a class="close_popup" href="javascript:;" onclick="RemoveEditorPreloader()"></a>
+            <div><b>Sie können nun Varianten für Ihr Projekt erstellen.</b></div>
+        <div>Verändern Sie einzelne Elemente für Tests. Zum Erzeugen von Testvarianten bewegen Sie die Maus über Bereiche, die Sie variieren wollen. 
+Mit einem Mausklick darauf öffnen Sie ein Menü von dem aus Sie das Element bearbeiten können.<br /><a target="_blank" class="help_link" href="https://blacktri-jira.atlassian.net/wiki/x/bgB7AQ">(Mehr Informationen zu diesem Thema)</a></div>
+    <div class="editor_popup_checkbox">
+        <label>
+            <input type="checkbox" onclick="SaveEditorSettings(this)" value="yes" />
+            Diesen Hinweis nicht mehr anzeigen        </label>
+    </div>
+            <div style="padding-top:5px;">
+            <a href="javascript:void(0)" onclick="RemoveEditorPreloader()" class="help_link">Dialog schließen und Seite jetzt bearbeiten</a>
+        </div>
+    </div>
+<div class="editor_popup_loading editor_popup_message3" style="display: none;">
+    <a class="close_popup" href="javascript:;" onclick="RemoveEditorPreloader()"></a>
+            <div><b>Fehler beim Laden der Seite</b></div>
+    	
+    <div>Das Dokument kann nicht geöffnet werden weil das HTML fehlerhaft ist.</div>
+	
+            <div style="padding-top:5px;">
+            <a href="javascript:void(0)" onclick="CancelEditing()" class="help_link">Abbrechen</a>
+        </div>
+    </div>
+<div class="editor_popup_loading editor_rename_variant smallpopup editor_confirm" style="display: none;">
+    <h1>Variante umbenennen</h1>
+    <div><input type="text" value="" id="variant_name" name="variant_name" class="validate[required] textbox" /></div>
+    <div class="clear"></div>
+    <div class="ctrl-buttons ">
+        <div class="links">
+            <a href="javascript:void(0)" onclick="CloseEditorPopups()" class="editor_back">Abbrechen</a>
+        </div>
+        <input type="button" onclick="SaveVisualABVariantName()" value="Umbenennen" style="margin-left:10px;" class="button ok" />
+    </div>
+</div>
+<!--  Edit link popup  -->
+
+<!--  Edit element url attribute popup for img and a tags -->
+<div class="editor_popup_loading  smallpopup editor_confirm ui-draggable" id="edit_url_popup" style="display: none;">
+    <h1 data-text_image="Bild-URL bearbeiten" data-text_link="Link bearbeiten" class="edit_url_text"><!--text filled by javascript--></h1>
+    <div><input type="text" value="" id="edit_url_input" name="new_link" class="validate[required] textbox" /></div>
+    <p><span data-text_image="Geben Sie hier die neue Bild-URL ein." data-text_link="Geben Sie hier die neue Link-URL ein." class="edit_url_text"><!--text filled by javascript--></span></p>
+    <div class="clear"></div>
+    <div class="ctrl-buttons ">
+        <div class="links">
+            <a href="javascript:void(0)" onclick="CloseEditorPopups()" class="editor_back">Abbrechen</a>
+        </div>
+        <input type="button" onclick="BlackTri.saveUrlAttribute()" value="Speichern" style="margin-left:10px;" class="button ok" />
+    </div>
+</div>
+
+<!-- Confirm delete variant popup-->
+<div class="editor_popup_loading smallpopup editor_confirm" id="confirm_delete_variant_popup" style="display: none;">
+    <a onclick="CloseEditorPopups()" href="javascript:;" class="close_popup"></a>
+    <h1>Variante löschen</h1>
+    <p>Möchten Sie diese Variante endgültig löschen? Alle von Ihnen gemachten Änderungen an der Variante gehen verloren.</p>
+    <div id="delete_variant_name"></div>
+    <div class="clear"></div>
+    <div class="ctrl-buttons ">
+        <div class="links">
+            <a href="javascript:void(0)" onclick="CloseEditorPopups()" class="editor_back">Abbrechen</a>
+        </div>
+        <input type="button" value="Löschen" onclick="RemoveVisualABVariant()" style="margin-left:10px;" class="button ok" />
+    </div>
+</div>
+
+<!--  Add "click" goal to a particular element -->
+<div class="editor_popup_loading  smallpopup editor_confirm ui-draggable" id="create_clickgoal_popup" style="display: none;">
+    <form id="create_clickgoal_form" action="javascript:void(0);">
+        <h1 class="edit_clickgoal_text">
+            Klicks tracken        </h1>
+        <div class="edit_clickgoal_content">
+            <div>
+                <input type="text" value="" id="clickgoal_input" name="click_goal" class="validate[required,funcCall[newClickGoalValidator]] textbox" />
+            </div>
+            <p>
+                <span>Name des Konversionsziels</span>
+            </p>
+            <div class="clear"></div>
+
+            <div class="ctrl-buttons">
+                <input type="button" value="Abbrechen" class="BtEditorButton cancel" />
+                <input type="submit" value="Speichern" class="BtEditorButton ok" />
+            </div>
+        </div>
+    </form>
+</div><!-- PERSO RULE EDIT CONTAINER-->
+<input type="hidden" id="cur_tenant" value="blacktri" />
+<input type="hidden" id="baseurl" value="https://www.blacktri.com/" />
+<input type="hidden" id="min_conds" value="1" />
+<input type="hidden" id="site_lang" value="german" />
+<input type="hidden" id="rule_label" value="Regel" />
+<input type="hidden" id="option_select" value="Bitte wählen..." />
+<input type="hidden" id="option_select_country" value="Land wählen..." />
+<input type="hidden" id="option_select_state" value="Staat/Bundesland wählen..." />
+<input type="hidden" id="option_select_region" value="Region wählen..." />
+<input type="hidden" id="option_select_city" value="Ort wählen..." />
+<input type="hidden" id="option_select_tt" value="Bitte wählen Sie mindestens eine Bedingung aus." />
+<input type="hidden" id="msg_del_condition" value="Bedingung löschen" />
+<input type="hidden" id="msg_conf_cancel" value="Sie haben Änderungen vorgenommen, wollen Sie wirklich ohne zu speichern abbrechen" />
+<input type="hidden" id="msg_del_rule" value="Wollen Sie die Segmentierungsregel wirklich löschen? Sie kann nicht wiederhergestellt werden." />
+
+<div class="perso_rule_overlay blacktri" id="perso_rule_editor_overlay"></div>
+
+<div class="perso_rule_wrapper blacktri" id="perso_rule_editor_wrapper">
+
+    <img id="perso_rule_editor_close" src="https://www.blacktri.com/images/fancy_box_close.png" />
+
+    <div class="blacktri" id="perso_rule_main_container">
+        <div id="perso_rule_loading"></div>
+        <h1 class="blacktri">Segmentierungsregel auswählen und bearbeiten</h1>
+        <p id="perso_intro_text">Sie können Projekte für bestimmte Besuchergruppen ausspielen. Legen Sie hier die Form der Segmentierung fest.</p>
+        <div class="sep"></div>
+
+        <h2 id="perso_rule_list_title">Segmentierungsregeln</h2>
+        <div class="clear"></div>
+        <div id="perso_rule_list_container">
+            <div id="perso_rule_list"></div>
+            <div class="(nicht personalisiert)" id="perso_rule_actions">
+                <a id="perso_rule_add_action" class="custom_tenant_bg  blacktri" href="javascript:void(0)">
+                    <div class="perso_sharp_icon"><i class="fa fa-plus minus-plus-icons"></i></div>
+                    <span>Regel hinzufügen</span>
+                </a>
+                <div class="clear"></div>
+                <a id="perso_rule_del_action" class="custom_tenant_bg  blacktri" href="javascript:void(0)">
+                    <div class="perso_sharp_icon   blacktri"><i class="fa fa-minus minus-plus-icons"></i></div>
+                    <span>Ausgewählte Regel entfernen</span>
+                </a>
+                <div class="clear"></div>
+            </div>
+        </div>
+
+        <div id="perso_rule_param_container">
+
+            <label class="perso_rule_hidden_title perso_rule_label  blacktri">
+                Sie haben noch keine Segmentierungsregel erstellt.            </label>
+            <p class="perso_rule_hidden_title  blacktri">
+                Bitte wählen Sie "Regel hinzufügen" und definieren Sie eine Regel.            </p>
+
+            <form id="perso_rule_form">
+                <div id="perso_rule_parameters">
+                    <label class="perso_rule_label  blacktri">
+                        Regelname                    </label>
+                    <input type="text" maxlength="32" id="perso_rule_name" class="text perso_rule_input validate[required]  blacktri" />
+                    <div class="sep"></div>
+
+                    <label class="perso_rule_label  blacktri">Regel anwenden, wenn Folgendes gilt:</label>
+                    <select id="perso_rule_validif" class="select perso_rule_input  blacktri">
+                        <option value="AND">Alle Bedingungen treffen zu</option><option value="OR">Mindestens eine der Bedingungen trifft zu</option>                    </select>
+                    <div class="sep"></div>
+                    <label class="perso_rule_label  blacktri">
+                        Bedingungen:
+                    </label>
+                    <div class="smallsep"></div>
+
+                    <div class="blacktri" id="perso_rule_conditions">
+                        <div id="perso_rule_contition_items"></div>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+
+                    <a class="custom_tenant_bg  perso_rule_add_cond blacktri" id="perso_rule_add_condition" href="javascript:void(0)">
+                        <div class="perso_sharp_icon"><i class="fa fa-plus minus-plus-icons"></i></div>
+                        <span>Bedingung hinzufügen</span>
+                        <div class="clear"></div>
+                    </a>
+                    <div class="clear"></div>
+            </form>
+
+        </div>
+    </div>
+    <div class="clear"></div>
+
+    <div class="perso_rule_btn_container blacktri">
+        <input type="button" value="Zurück" id="perso_rule_cancel" class="perso_rule_btn perso_rule_cancelbtn blacktri" />
+        <input type="button" value="Regel festlegen" id="perso_rule_save" class="perso_rule_btn perso_rule_savebtn blacktri" />
+    </div>
+    <div class="clear"></div>
+
+</div>
+
+<!-- Confirm delete Perso Rule -->
+<div class="perso_confirm_popup perso_rule_overlay blacktri" id="perso_rule_confirm_overlay"></div>
+<div class="perso_confirm_popup perso_rule_wrapper blacktri" id="perso_rule_confirm_wrapper">
+    <h1 class="blacktri">Segmentierungsregel löschen</h1>
+    <p id="perso_del_rule_name"></p>
+    <div class="clear"></div>
+
+    <div class="perso_rule_btn_container blacktri">
+        <input type="button" value="Abbrechen" id="perso_rule_nodelete" class="perso_rule_btn perso_rule_cancelbtn blacktri" />
+        <input type="button" value="Segmentierungsregel löschen" id="perso_rule_delete" class="perso_rule_btn perso_rule_savebtn blacktri" />
+    </div>
+</div>
+
+<!-- Confirm cancel Rule -->
+<div class="perso_confirm_popup perso_rule_overlay blacktri" id="perso_rule_cancel_overlay"></div>
+<div class="perso_confirm_popup perso_rule_wrapper blacktri" id="perso_rule_cancel_wrapper">
+    <h1 class="blacktri">Änderungen gehen verloren</h1>
+    <p id="perso_discard_changes">Sie haben Änderungen vorgenommen, wollen Sie wirklich ohne zu speichern abbrechen</p>
+    <div class="clear"></div>
+
+    <div class="perso_rule_btn_container blacktri">
+        <input type="button" value="Abbrechen" id="perso_rule_noexit" class="perso_rule_btn perso_rule_cancelbtn blacktri" />
+        <input type="button" value="Ohne Speichern beenden" id="perso_rule_exit" class="perso_rule_btn perso_rule_savebtn blacktri" />
+    </div>
+</div><div class="hide" id="wizard_step_wrap">
+
+    <div id="vab2_1" class="confirmation confirmation-user">
+        <h1>URL angeben</h1>
+        <form onsubmit="return false;" method="post" name="frmVisualABStep1" id="frmVisualABStep1">
+            <div class="confirmation-field w100">
+                <label>Geben Sie hier die URL der Originalseite ein, die Sie optimieren wollen.</label>
+                <div>Sie können dazu die Seite im Browser öffnen und die URL aus der Adresszeile kopieren. <a target="_blank" class="help_link" href="https://blacktri-jira.atlassian.net/wiki/x/bgB7AQ">(Was muss ich dabei beachten?)</a></div>
+                <input type="text" placeholder="http://" value="" id="vablpname" name="vablpname" style="width:690px" class="validate[custom[urlsmall]] textbox" />
+                                <div class="popup-textinfo">Beispiel: http://www.mylandingpage.com oder http://www.mylandingpage.com/article.jsp?id=4711</div>
+
+
+                <div class="ctrl-buttons ">
+		 	        <input type="button" value="Dashboard" onclick="CancelEditing()" class="button cancel_step" />
+                    <input type="submit" value="Weiter und Seite jetzt öffnen" class="button next_step" />
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <input type="hidden" id="current-tenant" value="blacktri" /><input type="hidden" id="perso-new-campaign" value="Sie können Projekte für bestimmte Besuchergruppen ausspielen. Legen Sie hier die Form der Segmentierung fest. 
+	Wenn Sie einen A/B-Test für bestimmte Besuchergruppe ausspielen wollen, wählen sie z. B. die dritte Option, wenn Sie einzelne Varianten an bestimmte Besuchergruppen ausspielen wollen, die zweite Option. Über das Plus-Symbol können Sie dann eine Segmentierungsregel festlegen." /><input type="hidden" id="perso-edit-campaign" value="Sie können Projekte für bestimmte Besuchergruppen ausspielen. Legen Sie hier die Form der Segmentierung fest. 
+	Wenn Sie einen A/B-Test für bestimmte Besuchergruppe ausspielen wollen, wählen sie z. B. die dritte Option, wenn Sie einzelne Varianten an bestimmte Besuchergruppen ausspielen wollen, die zweite Option. Über das Plus-Symbol können Sie dann eine Segmentierungsregel festlegen." /><input type="hidden" id="perso-noperso-intro" value="Die Varianten dieses Projektes werden an alle Besucher geliefert." /><input type="hidden" id="perso-complete-intro" value="Das Projektes wird als A/B-Test für eine definierte Besuchergruppe ausgespielt. 
+	Klicken Sie auf das Plus-Symbol, um diese Besuchergruppe mit einer Segmentierungsregel zu definieren." /><input type="hidden" id="perso-single-intro" value="Jede Variante des Projektes wird an eine bestimmte Besuchergruppe ausgespielt 
+	werden. Klicken Sie auf das Plus-Symbol, um eine Besuchergruppe mit einer Segmentierungsregel zu definieren." /><input type="hidden" id="perso-has-sms" value="Dies ist ein Smart Messaging - Projekt, die Originalseite wird nicht ausgespielt weil dies Ergebnisse ohne Aussagekraft erzeugen würde." /><input type="hidden" id="perso-table-title" value="Segmentierungsregel" /><input type="hidden" id="perso-unpersonalized" value="(nicht personalisiert)" /><input type="hidden" id="perso-variant-label" value="Variante " />    <div id="vab2_3" class="confirmation confirmation-user">
+        <h1 class="left-float-title">Segmentierung festlegen</h1>
+        <div style="clear:both"></div>
+
+        <form action="javascript:void(0)" class="blacktri" id="frmVisualABStep3" method="post">
+            <div class="headline">
+                <p class="blacktri" id="perso-headline">Sie können Projekte für bestimmte Besuchergruppen ausspielen. Legen Sie hier die Form der Segmentierung fest. 
+	Wenn Sie einen A/B-Test für bestimmte Besuchergruppe ausspielen wollen, wählen sie z. B. die dritte Option, wenn Sie einzelne Varianten an bestimmte Besuchergruppen ausspielen wollen, die zweite Option. Über das Plus-Symbol können Sie dann eine Segmentierungsregel festlegen.</p>
+                <div style="clear:both"></div>
+
+                <div id="steps-perso-radio-container">
+                    <input type="radio" value="0" name="perso-type-selection" checked="checked" id="perso-type-0" class="perso-type-radio" />
+                    <label for="perso-type-0" class="perso-type-label blacktri">
+                        Ohne Segmentierung                    </label>
+                    <div style="clear:both"></div>
+
+                    <input type="radio" value="2" name="perso-type-selection" id="perso-type-2" class="perso-type-radio" />
+                    <label for="perso-type-2" class="perso-type-label   blacktri">
+                        Einzelne Varianten segmentiert ausspielen                     </label>
+                    <div style="clear:both"></div>
+
+                    <input type="radio" value="1" name="perso-type-selection" id="perso-type-1" class="perso-type-radio" />
+                    <label for="perso-type-1" class="perso-type-label   blacktri">
+                        A/B-Test für Besuchersegment ausspielen                    </label>
+                    <div style="clear:both"></div>
+                </div>
+
+                <div id="steps-perso-upgrade-container">
+                                    </div>
+                <div style="clear:both"></div>
+            </div>
+            <div style="clear:both"></div>
+
+            <div class="blacktri" id="step-perso-bottom-container">
+                <span class="blacktri" id="perso-copy-text">Die Varianten dieses Projektes werden an alle Besucher geliefert.</span>
+
+                <div class="blacktri" id="perso-complete-rule">
+                    <div class="blacktri" id="edit-rule-link-container">
+                        <a class="rule-list-link perso_wizard_link" href="javascript:void(0)">Segmentierungsregel: </a>
+                        <div style="clear:both"></div>
+                    </div>
+                </div>
+
+                <div class="blacktri" id="perso-table-container"></div>
+                <input type="hidden" value="0" name="perso-complete-ruleid" id="perso-complete-ruleid" />
+                <div style="clear:both"></div>
+            </div>
+
+                            <div class="ctrl-buttons">
+                    <div class="links">
+                        <a class="editor_back" onclick="$.fancybox.close()" href="javascript:void(0)">Abbrechen</a>
+                    </div>
+                    <input type="submit" value="Segmentierung abschließen" class="button ok" />
+                </div>
+                        </form>
+    </div>
+    <!-- *********************************************END PERSONALIZATION************************************************** -->
+
+    <div id="vab2_4" class="confirmation confirmation-user">
+        <h1>Projektname und URL festlegen</h1>
+        <form onsubmit="return false;" method="post" name="frmVisualABStep4" id="frmVisualABStep4">
+            <div class="confirmation-field w100">
+                <input type="hidden" value="http://www.eckhardschneider.de/blacktritest/testpage_live.html" id="testurl" name="testurl" />
+                <input type="hidden" id="lpccode" name="lpccode" value="BT-c7133d5fc53384396834f62ef047d" />
+                <input type="hidden" id="variantdata" name="variantdata" />
+                <input type="hidden" id="savestep" name="savestep" />
+                <input type="hidden" value="1" class="tracking_approach" id="tracking_approach" name="tracking_approach" /><!-- default value = 1-OCPC, 2-OCPT -->
+                <input type="hidden" id="device_type" name="device_type" value="desktop" />
+                <label>
+                        Projektname</label>
+                <!-- validate[required,ajax[ajaxTestName]] -->
+                <input type="text" value="" id="testname" name="testname" class="textbox validate[required]" maxlength="100" />
+                <div style="clear:both"></div>
+
+                <div class="popup-textinfo ">
+                                    </div>
+
+                
+                <div class="ocpc">
+                    
+                    
+                    <div class="ocpc_headline hide non_mpt">
+                        <div class="headline">
+                            <label>URL für die Seite(n) des Projekts</label>
+                            <div>Geben Sie an, für welche URLs das Projekt ausgespielt werden soll, bzw. welche URLs ausgeschlossen werden sollen. Sie können das * Zeichen als Platzhalter verwenden.
+Alternativ können Sie in der Seite eine Javascript-Variable et_pagename setzen und deren Inhalt hier angeben.</div>
+                        </div>
+
+                        <div id="url_control_patterns">
+                            <div class="url_pattern_element">
+                                <input type="text" value="http://www.eckhardschneider.de/blacktritest/testpage_live.html" name="control_pattern[]" class="textbox validate[required]" maxlength="1024" id="url_pattern_textbox" />
+                                <select name="url_include[]" class="urlpattern_behavior">
+                                    <option value="include">URL für Projekt</option><option value="exclude">Ausgeschl. URL</option>                                </select>
+
+                                <div class="url_pattern_remove">
+                                    <input type="button" class="lp-button lp-delete lp_delete_4_4" />
+                                </div>
+                                
+                                <div class="clear"></div>
+                            </div>
+                        </div>
+
+                        <div style="clear:both"></div>
+                        <div class="popup-textinfo ">
+                            Beispiel: */product.php                        </div>
+
+                        <div class="links">
+                            <a href="javascript:void(0);" class="button-4-4" id="wizard_add_url">Eine weitere URL hinzufügen</a>
+                        </div>
+
+                    </div>
+
+                                    
+                    
+                                    <div class="line-3-4"></div>
+                    <div class="additional_project_config">
+                        <div class="headline">
+                            <label>Projekt für IP-Adressen ausspielen</label>
+                            <div>
+                                Geben Sie hier eine oder mehrere IP-Adressen an und wählen Sie, ob nur für diese das Projekt ausgespielt werden soll, oder ob sie vom Ausspielen ausgeschlossen werden sollen. <a target="_blank" class="help_link" href="https://blacktri-jira.atlassian.net/wiki/x/dAB7AQ">(Was muss ich dabei beachten?)</a>                                
+                                <div class="ip_filter_element">
+                                    <input type="text" disabled="disabled" value="" name="ip_filter_list" id="ip_filter_list" class="textbox" maxlength="1024" />
+                                    <select id="ip_filter_action" name="ip_filter_action" class="ip_filter_action ">
+                                        <option value="not_used">Projekt unabhängig von IP ausspielen</option>
+                                        <option value="allow">Für angegebene IPs ausspielen</option>
+                                        <option value="deny">Projekt für angegebene IPs ausschließen</option>
+                                    </select>
+                                    <div class="clear"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                
+                                            <div class="additional_project_config">
+                            <div class="headline">
+                                <label>Start und Endzeitpunkt für das Projekt</label>
+                                <div>
+                                Legen Sie fest, in welchem Zeitraum Seiten Ihres Projektes ausgeliefert werden sollen (Datum und Uhrzeit in MEZ).<input type="hidden" value="Januar,Februar,März,April,Mai,Juni,Juli,August,September,Oktober,November,Dezember" id="datepicker_locale_month" /><input type="hidden" value="Jan,Feb,Mar,Apr,Mai,Jun,Jul,Aug,Sep,Okt,Nov,Dez" id="datepicker_locale_month_short" /><input type="hidden" value="Sonntag,Montag,Dienstag,Mittwoch,Donnerstag,Freitag,Samstag" id="datepicker_locale_days" /><input type="hidden" value="Son,Mon,Die,Mit,Don,Fre,Sam" id="datepicker_locale_days_short" /><input type="hidden" value="So,Mo,Di,Mi,Do,Fr,Sa" id="datepicker_locale_days_min" /><input type="hidden" value="14:00:20" id="lpc_current_start_time" /><input type="hidden" value="23:00:00" id="lpc_current_end_time" />                                    <div id="start_end_options">
+                                        <label class="start_end_label">
+                                            Start:
+                                        </label>
+                                    
+                                        <input type="text" value="18.07.2016" id="lpc_start_date" name="lpc_start_date" class="start_end_text" />
+                                    
+                                        <a href="javascript:void(0);" class="calendar_icon" id="lpc_start_calendar">
+                                            <i title="Auswahl Startdatum" class="fa fa-calendar "></i>
+                                        </a>
+                                    
+                                        <div id="lpc_start_timeframe" class="lpc_timeframe lpc_start_calendar">
+                                            <div class="calendar">
+                                                <div class="lpc_datepicker" id="lpc_start_datepicker"><div class="datepicker" id="datepicker_876" style="display: block; position: relative; width: 0px; height: 0px;"><div class="datepickerBorderT"></div><div class="datepickerBorderB"></div><div class="datepickerBorderL"></div><div class="datepickerBorderR"></div><div class="datepickerBorderTL"></div><div class="datepickerBorderTR"></div><div class="datepickerBorderBL"></div><div class="datepickerBorderBR"></div><div class="datepickerContainer" style="width: 0px; height: 0px;"><table cellspacing="0" cellpadding="0"><tbody><tr><td><table cellspacing="0" cellpadding="0" class="datepickerViewDays"><thead><tr><th class="datepickerGoPrev"><a href="#"><span></span></a></th><th class="datepickerMonth" colspan="6"><a href="#"><span>Juli, 2016</span></a></th><th class="datepickerGoNext"><a href="#"><span></span></a></th></tr><tr class="datepickerDoW"><th><span>W</span></th><th><span>Mo</span></th><th><span>Di</span></th><th><span>Mi</span></th><th><span>Do</span></th><th><span>Fr</span></th><th><span>Sa</span></th><th><span>So</span></th></tr></thead><tbody class="datepickerMonths"><tr><td colspan="2"><a href="#"><span>Jan</span></a></td><td colspan="2"><a href="#"><span>Feb</span></a></td><td colspan="2"><a href="#"><span>Mar</span></a></td><td colspan="2"><a href="#"><span>Apr</span></a></td></tr><tr><td colspan="2"><a href="#"><span>Mai</span></a></td><td colspan="2"><a href="#"><span>Jun</span></a></td><td colspan="2"><a href="#"><span>Jul</span></a></td><td colspan="2"><a href="#"><span>Aug</span></a></td></tr><tr><td colspan="2"><a href="#"><span>Sep</span></a></td><td colspan="2"><a href="#"><span>Okt</span></a></td><td colspan="2"><a href="#"><span>Nov</span></a></td><td colspan="2"><a href="#"><span>Dez</span></a></td></tr></tbody><tbody class="datepickerDays"><tr><th class="datepickerWeek"><a href="#"><span>26</span></a></th><td class="datepickerNotInMonth datepickerDisabled"><a href="#"><span>27</span></a></td><td class="datepickerNotInMonth datepickerDisabled"><a href="#"><span>28</span></a></td><td class="datepickerNotInMonth datepickerDisabled"><a href="#"><span>29</span></a></td><td class="datepickerNotInMonth datepickerDisabled"><a href="#"><span>30</span></a></td><td class="datepickerDisabled"><a href="#"><span>1</span></a></td><td class="datepickerSaturday datepickerDisabled"><a href="#"><span>2</span></a></td><td class="datepickerSunday datepickerDisabled"><a href="#"><span>3</span></a></td></tr><tr><th class="datepickerWeek"><a href="#"><span>27</span></a></th><td class="datepickerDisabled"><a href="#"><span>4</span></a></td><td class="datepickerDisabled"><a href="#"><span>5</span></a></td><td class="datepickerDisabled"><a href="#"><span>6</span></a></td><td class="datepickerDisabled"><a href="#"><span>7</span></a></td><td class="datepickerDisabled"><a href="#"><span>8</span></a></td><td class="datepickerSaturday datepickerDisabled"><a href="#"><span>9</span></a></td><td class="datepickerSunday datepickerDisabled"><a href="#"><span>10</span></a></td></tr><tr><th class="datepickerWeek"><a href="#"><span>28</span></a></th><td class="datepickerDisabled"><a href="#"><span>11</span></a></td><td class="datepickerDisabled"><a href="#"><span>12</span></a></td><td class="datepickerDisabled"><a href="#"><span>13</span></a></td><td class="datepickerDisabled"><a href="#"><span>14</span></a></td><td class="datepickerDisabled"><a href="#"><span>15</span></a></td><td class="datepickerSaturday datepickerDisabled"><a href="#"><span>16</span></a></td><td class="datepickerSunday datepickerDisabled"><a href="#"><span>17</span></a></td></tr><tr><th class="datepickerWeek"><a href="#"><span>29</span></a></th><td class="datepickerSelected"><a href="#"><span>18</span></a></td><td class=""><a href="#"><span>19</span></a></td><td class=""><a href="#"><span>20</span></a></td><td class=""><a href="#"><span>21</span></a></td><td class=""><a href="#"><span>22</span></a></td><td class="datepickerSaturday"><a href="#"><span>23</span></a></td><td class="datepickerSunday"><a href="#"><span>24</span></a></td></tr><tr><th class="datepickerWeek"><a href="#"><span>30</span></a></th><td class=""><a href="#"><span>25</span></a></td><td class=""><a href="#"><span>26</span></a></td><td class=""><a href="#"><span>27</span></a></td><td class=""><a href="#"><span>28</span></a></td><td class=""><a href="#"><span>29</span></a></td><td class="datepickerSaturday"><a href="#"><span>30</span></a></td><td class="datepickerSunday"><a href="#"><span>31</span></a></td></tr><tr><th class="datepickerWeek"><a href="#"><span>31</span></a></th><td class="datepickerNotInMonth"><a href="#"><span>1</span></a></td><td class="datepickerNotInMonth"><a href="#"><span>2</span></a></td><td class="datepickerNotInMonth"><a href="#"><span>3</span></a></td><td class="datepickerNotInMonth"><a href="#"><span>4</span></a></td><td class="datepickerNotInMonth"><a href="#"><span>5</span></a></td><td class="datepickerNotInMonth datepickerSaturday"><a href="#"><span>6</span></a></td><td class="datepickerNotInMonth datepickerSunday"><a href="#"><span>7</span></a></td></tr></tbody><tbody class="datepickerYears"><tr><td colspan="2"><a href="#"><span>2010</span></a></td><td colspan="2"><a href="#"><span>2011</span></a></td><td colspan="2"><a href="#"><span>2012</span></a></td><td colspan="2"><a href="#"><span>2013</span></a></td></tr><tr><td colspan="2"><a href="#"><span>2014</span></a></td><td colspan="2"><a href="#"><span>2015</span></a></td><td colspan="2"><a href="#"><span>2016</span></a></td><td colspan="2"><a href="#"><span>2017</span></a></td></tr><tr><td colspan="2"><a href="#"><span>2018</span></a></td><td colspan="2"><a href="#"><span>2019</span></a></td><td colspan="2"><a href="#"><span>2020</span></a></td><td colspan="2"><a href="#"><span>2021</span></a></td></tr></tbody></table></td></tr></tbody></table></div></div></div>
+                                            </div>
+                                            <div class="clear"></div>
+                                        </div>
+    
+                                        <select id="lpc_start_time" name="lpc_start_time" class="start_end_select">
+                                            <option value="00:00:00">00:00:00</option><option value="01:00:00">01:00:00</option><option value="02:00:00">02:00:00</option><option value="03:00:00">03:00:00</option><option value="04:00:00">04:00:00</option><option value="05:00:00">05:00:00</option><option value="06:00:00">06:00:00</option><option value="07:00:00">07:00:00</option><option value="08:00:00">08:00:00</option><option value="09:00:00">09:00:00</option><option value="10:00:00">10:00:00</option><option value="11:00:00">11:00:00</option><option value="12:00:00">12:00:00</option><option value="13:00:00">13:00:00</option><option value="14:00:00">14:00:00</option><option value="15:00:00">15:00:00</option><option value="16:00:00">16:00:00</option><option value="17:00:00">17:00:00</option><option value="18:00:00">18:00:00</option><option value="19:00:00">19:00:00</option><option value="20:00:00">20:00:00</option><option value="21:00:00">21:00:00</option><option value="22:00:00">22:00:00</option><option value="23:00:00">23:00:00</option>                                        </select>
+                                        <div class="clear"></div>
+                                        
+                                        <label class="start_end_label">
+                                            Ende:
+                                        </label>
+                                    
+                                        <input type="text" value="18.07.2017 " id="lpc_end_date" name="lpc_end_date" class="start_end_text" />
+                                    
+                                        <a href="javascript:void(0);" class="calendar_icon" id="lpc_end_calendar">
+                                            <i title="Auswahl Endedatum" class="fa fa-calendar "></i>
+                                        </a>
+                                        
+                                        <div id="lpc_end_timeframe" class="lpc_timeframe lpc_end_calendar">
+                                            <div class="calendar">
+                                                <div class="lpc_datepicker" id="lpc_end_datepicker"><div class="datepicker" id="datepicker_514" style="display: block; position: relative; width: 0px; height: 0px;"><div class="datepickerBorderT"></div><div class="datepickerBorderB"></div><div class="datepickerBorderL"></div><div class="datepickerBorderR"></div><div class="datepickerBorderTL"></div><div class="datepickerBorderTR"></div><div class="datepickerBorderBL"></div><div class="datepickerBorderBR"></div><div class="datepickerContainer" style="width: 0px; height: 0px;"><table cellspacing="0" cellpadding="0"><tbody><tr><td><table cellspacing="0" cellpadding="0" class="datepickerViewDays"><thead><tr><th class="datepickerGoPrev"><a href="#"><span></span></a></th><th class="datepickerMonth" colspan="6"><a href="#"><span>Juli, 2017</span></a></th><th class="datepickerGoNext"><a href="#"><span></span></a></th></tr><tr class="datepickerDoW"><th><span>W</span></th><th><span>Mo</span></th><th><span>Di</span></th><th><span>Mi</span></th><th><span>Do</span></th><th><span>Fr</span></th><th><span>Sa</span></th><th><span>So</span></th></tr></thead><tbody class="datepickerMonths"><tr><td colspan="2"><a href="#"><span>Jan</span></a></td><td colspan="2"><a href="#"><span>Feb</span></a></td><td colspan="2"><a href="#"><span>Mar</span></a></td><td colspan="2"><a href="#"><span>Apr</span></a></td></tr><tr><td colspan="2"><a href="#"><span>Mai</span></a></td><td colspan="2"><a href="#"><span>Jun</span></a></td><td colspan="2"><a href="#"><span>Jul</span></a></td><td colspan="2"><a href="#"><span>Aug</span></a></td></tr><tr><td colspan="2"><a href="#"><span>Sep</span></a></td><td colspan="2"><a href="#"><span>Okt</span></a></td><td colspan="2"><a href="#"><span>Nov</span></a></td><td colspan="2"><a href="#"><span>Dez</span></a></td></tr></tbody><tbody class="datepickerDays"><tr><th class="datepickerWeek"><a href="#"><span>26</span></a></th><td class="datepickerNotInMonth"><a href="#"><span>26</span></a></td><td class="datepickerNotInMonth"><a href="#"><span>27</span></a></td><td class="datepickerNotInMonth"><a href="#"><span>28</span></a></td><td class="datepickerNotInMonth"><a href="#"><span>29</span></a></td><td class="datepickerNotInMonth"><a href="#"><span>30</span></a></td><td class="datepickerSaturday"><a href="#"><span>1</span></a></td><td class="datepickerSunday"><a href="#"><span>2</span></a></td></tr><tr><th class="datepickerWeek"><a href="#"><span>27</span></a></th><td class=""><a href="#"><span>3</span></a></td><td class=""><a href="#"><span>4</span></a></td><td class=""><a href="#"><span>5</span></a></td><td class=""><a href="#"><span>6</span></a></td><td class=""><a href="#"><span>7</span></a></td><td class="datepickerSaturday"><a href="#"><span>8</span></a></td><td class="datepickerSunday"><a href="#"><span>9</span></a></td></tr><tr><th class="datepickerWeek"><a href="#"><span>28</span></a></th><td class=""><a href="#"><span>10</span></a></td><td class=""><a href="#"><span>11</span></a></td><td class=""><a href="#"><span>12</span></a></td><td class=""><a href="#"><span>13</span></a></td><td class=""><a href="#"><span>14</span></a></td><td class="datepickerSaturday"><a href="#"><span>15</span></a></td><td class="datepickerSunday"><a href="#"><span>16</span></a></td></tr><tr><th class="datepickerWeek"><a href="#"><span>29</span></a></th><td class=""><a href="#"><span>17</span></a></td><td class="datepickerSelected"><a href="#"><span>18</span></a></td><td class=""><a href="#"><span>19</span></a></td><td class=""><a href="#"><span>20</span></a></td><td class=""><a href="#"><span>21</span></a></td><td class="datepickerSaturday"><a href="#"><span>22</span></a></td><td class="datepickerSunday"><a href="#"><span>23</span></a></td></tr><tr><th class="datepickerWeek"><a href="#"><span>30</span></a></th><td class=""><a href="#"><span>24</span></a></td><td class=""><a href="#"><span>25</span></a></td><td class=""><a href="#"><span>26</span></a></td><td class=""><a href="#"><span>27</span></a></td><td class=""><a href="#"><span>28</span></a></td><td class="datepickerSaturday"><a href="#"><span>29</span></a></td><td class="datepickerSunday"><a href="#"><span>30</span></a></td></tr><tr><th class="datepickerWeek"><a href="#"><span>31</span></a></th><td class=""><a href="#"><span>31</span></a></td><td class="datepickerNotInMonth"><a href="#"><span>1</span></a></td><td class="datepickerNotInMonth"><a href="#"><span>2</span></a></td><td class="datepickerNotInMonth"><a href="#"><span>3</span></a></td><td class="datepickerNotInMonth"><a href="#"><span>4</span></a></td><td class="datepickerNotInMonth datepickerSaturday"><a href="#"><span>5</span></a></td><td class="datepickerNotInMonth datepickerSunday"><a href="#"><span>6</span></a></td></tr></tbody><tbody class="datepickerYears"><tr><td colspan="2"><a href="#"><span>2011</span></a></td><td colspan="2"><a href="#"><span>2012</span></a></td><td colspan="2"><a href="#"><span>2013</span></a></td><td colspan="2"><a href="#"><span>2014</span></a></td></tr><tr><td colspan="2"><a href="#"><span>2015</span></a></td><td colspan="2"><a href="#"><span>2016</span></a></td><td colspan="2"><a href="#"><span>2017</span></a></td><td colspan="2"><a href="#"><span>2018</span></a></td></tr><tr><td colspan="2"><a href="#"><span>2019</span></a></td><td colspan="2"><a href="#"><span>2020</span></a></td><td colspan="2"><a href="#"><span>2021</span></a></td><td colspan="2"><a href="#"><span>2022</span></a></td></tr></tbody></table></td></tr></tbody></table></div></div></div>
+                                            </div>
+                                            <div class="clear"></div>
+                                        </div>
+                                    
+                                        <select id="lpc_end_time" name="lpc_end_time" class="start_end_select">
+                                            <option value="00:00:00">00:00:00</option><option value="01:00:00">01:00:00</option><option value="02:00:00">02:00:00</option><option value="03:00:00">03:00:00</option><option value="04:00:00">04:00:00</option><option value="05:00:00">05:00:00</option><option value="06:00:00">06:00:00</option><option value="07:00:00">07:00:00</option><option value="08:00:00">08:00:00</option><option value="09:00:00">09:00:00</option><option value="10:00:00">10:00:00</option><option value="11:00:00">11:00:00</option><option value="12:00:00">12:00:00</option><option value="13:00:00">13:00:00</option><option value="14:00:00">14:00:00</option><option value="15:00:00">15:00:00</option><option value="16:00:00">16:00:00</option><option value="17:00:00">17:00:00</option><option value="18:00:00">18:00:00</option><option value="19:00:00">19:00:00</option><option value="20:00:00">20:00:00</option><option value="21:00:00">21:00:00</option><option value="22:00:00">22:00:00</option><option value="23:00:00">23:00:00</option>                                        </select>
+                                        <div class="clear"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                                            
+                        <div class="allocation blacktri">
+
+                            <label>Anzahl der Projektteilnehmer</label>
+                            <div>Geben Sie hier an, wieviel Prozent aller Besucher der Originalseite am Projekt teilnehmen sollen.</div>
+                            <select id="allocation" name="allocation" class="dropdown ">
+                                <option value="1">100%</option>
+                                <option value="0.5">50%</option>
+                                <option value="0.2">20%</option>
+                                <option value="0.1">10%</option>
+                                <option value="0.05">5%</option>
+                                <option value="0.01">1%</option>
+                                <option value="0.005">0.5%</option>
+                                <option value="0.001">0.1%</option>
+                            </select>
+                        </div> 
+                        <div class="clear"></div>
+                        
+                                        </div>
+
+                <div class="ocpt hide">
+                    <div class="ocpt_headline hide">
+
+                        <!-- visual test -->
+                        <div condition="all the others" class="headline h1">
+                            <label></label>
+                            <div></div>
+                        </div>
+                        <div condition="EC &amp; SPC, SPC" class="headline h2 hide">
+                            <label></label>
+                            <div></div>
+                        </div>
+                    </div>
+                    <div class="trackingcode_ocpt">
+                        <div class="ocpt_control hide">
+                            <label></label>
+                            <div><a target="_blank" class="help_link" href="https://blacktri-jira.atlassian.net/wiki/x/eAB7AQ">(Detaillierte Anleitung zum Einbau des Trackingcodes)</a></div>
+                            <textarea rows="6" resize="none" id="trackingcode_control" name="trackingcode_control" class="textbox trackingcode w100"></textarea>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                                    <div class="ctrl-buttons">
+                        <div class="clear"></div>
+                        <div class="links">
+                            <a class="editor_back" onclick="CreateVisualAB(3, true)" href="javascript:void(0)">
+                                Segmentierung festlegen                            </a>
+                        </div>
+                        <input type="submit" value="Konversionsziele festlegen" class="button ok" />
+                    </div>
+                                </div>
+        <input type="hidden" name="lpc_isMpt" value="false" /></form>
+    </div>
+
+    <div id="vab2_5" class="confirmation confirmation-user ">
+        <h1>Konversionsziele festlegen</h1>
+        <form onsubmit="return false;" method="post" name="frmVisualABStep5" id="frmVisualABStep5">
+            <div class="confirmation-field w100">
+                <label>Legen Sie hier Konversionsziele fest</label>
+                <div>Mit dieser Auswahl geben Sie an, welche Aktionen Ihrer Besucher als Konversion gewertet werden. Sie können 
+	mehrere Konversionsziele angeben, auch mehrere vom gleichen Typ. Wenn ein Besucher eine einzige der Aktionen durchführt, dann gilt er als konvertiert.</div>
+                <div class="separator_line    "></div>
+ <input type="hidden" value="1" id="primary_goal_cons" />
+<input type="hidden" value="0" id="secondary_goal_cons" />
+                                
+<div class="conversion_goals"> 
+                        <div class="conversion_goal_ph">
+
+                            
+
+                        <div class="goal_group hide" style="display: block;">
+                                <div class="goal_remove ">
+                                <input type="button" class="lp-button lp-delete lp_delete_4_4" onclick="RemoveGoal(this)" />
+                                </div>
+                                <select onchange="ChangeGoal(this)" class="goal_dropdownlist dropdown validate[required]" name="conversion_goal_id[]" id="conversion_goal_id"><option value="">Bitte wählen...</option><option value="1" class="regular" data-pageid="false">Engagement</option><option value="2" class="regular" data-pageid="false">Affiliate-Anzeige</option><option value="3" class="regular" data-pageid="false">Aufruf Zielseite</option><option value="12" class="regular" data-pageid="false">Aufruf Ziel-Link</option><option value="13" class="regular" data-pageid="false">Javascript-Event</option><option value="14" class="regular" data-pageid="false">Seitenverweildauer</option></select>
+
+                                <input type="hidden" name="conversion_goal_level[]" class="conversion_goal_levels" id="conversion_goal_level" value="1" />
+                                
+                                <span id="goal_level_primary" class="goal_level_title" style="display: inline;">Primäres Ziel</span>
+                                <span id="goal_level_secondary" class="goal_level_title">Sekundäres Ziel</span>
+                                <a href="javascript:void(0);" class="goal_level_change">Zum Primären Ziel machen</a>
+                                <div class="clear"></div>
+                                    
+                                <div class="conversion_goal_desc " style="display: block;">
+                                    <label class="goal_desc_1 desc " style="display: block;">Sobald ein Besucher einen Link auf der Seite anklickt oder ein Formular abschickt, wird dies als Engagement gewertet. Dieses 
+Ziel eignet sich, um zu testen, wie die Absprungrate reduziert werden kann. Darüber hinaus führt sie meist zu recht schnellen Test-Ergebnissen.</label>                                    <label class="goal_desc_2 desc " style="display: none;">Wählen Sie dieses Ziel, wenn Sie die Zahl der Klicks auf Affiliate-Werbemittel auf Ihrer Seite 
+	optimieren wollen. Wir erkennen die Links durch Vergleich mit unserer Datenbank als Affiliate-Werbemittel.</label>                                                                        <label class="goal_desc_3 desc " style="display: none;">Wählen Sie dieses Ziel, wenn das Aufrufen einer Zielseite (etwa einer Danke- oder Bestätigungsseite) in einem Kaufprozess
+	als Konversion gewertet werden soll.</label>                                                                        <label class="goal_desc_13 desc " style="display: none;">Sie können durch Aufruf der JavaScript-Funktion _bt.trackCustomGoal(eventname) von Ihrem HTML-Code aus sehr flexibel 
+	bestimmte Besucher-Aktionen als Konversion zählbar machen. Wählen Sie dieses Konversionsziel, wenn Sie das nutzen wollen.</label>                                    <label class="goal_desc_14 desc " style="display: none;">Anstelle der Konversionsrate wird die durchschnittliche Verweildauer der Besucher auf der Seite gemessen und optimiert.</label>                                                                                                                                                                                                                                                            <label class="goal_desc_12 desc " style="display: none;">Wählen Sie dieses Ziel, wenn der Klick auf einen Link mit einer bestimmten URL als Konversion gewertet werden soll.</label>                                               
+                                    <div style="clear:both;"></div>
+                                </div>                            
+                                <div class="clear"></div>                            
+                                <div class="conversion_goal_params" style="display: block;">
+                                    <div class="goal_id_3 param" style="display: none;">
+                                        <input class="textbox validate[required] conversion_goal_param" id="conversion_goal_param" name="conversion_goal_param[3][]" />
+                                        <div class="popup-textinfo">Geben Sie die URL der Zielseite ein. Sie können das * Zeichen als Platzhalter verwenden.</div>
+                                    </div>
+                                    <div class="goal_id_12 param" style="display: none;">
+                                        <input class="textbox validate[required] conversion_goal_param" id="conversion_goal_param" name="conversion_goal_param[12][]" />
+                                        <div class="popup-textinfo">Geben Sie die URL des Links ein. Sie können das * Zeichen als Platzhalter verwenden.</div>
+                                    </div>
+                                    <div class="goal_id_13 param" style="display: none;">
+                                        <input class="textbox conversion_goal_param" id="conversion_goal_param" name="conversion_goal_param[13][]" />
+                                        <div class="popup-textinfo">Geben Sie hier den Namen des Events ein, der der Funktion _bt.trackCustomGoal() als Parameter übergeben wird.</div>
+                                    </div>
+                                    <div class="goal_id_5 param" style="display: none;">
+                                        <select class="dropdown validate[required] conversion_goal_param" id="conversion_goal_param" name="conversion_goal_param[5][]">
+                                            <option value=""></option>
+                                        <option value="[">[</option></select>
+                                        <div class="popup-textinfo"></div>
+                                    </div>
+                                    <div class="goal_id_6 param" style="display: none;">
+                                        <select class="dropdown validate[required] conversion_goal_param" id="conversion_goal_param" name="conversion_goal_param[6][]">
+                                            <option value=""></option>
+                                        <option value="&quot;">"</option></select>
+                                        <div class="popup-textinfo"></div>
+                                    </div>
+                                    <div class="goal_id_7 param" style="display: none;">
+                                        <input class="textbox validate[required] conversion_goal_param" id="conversion_goal_param" name="conversion_goal_param[7][]" />
+                                        <div class="popup-textinfo"></div>
+                                    </div>
+                                </div>
+
+                                <input type="hidden" class="name_clickgoal" name="click_goal_name[]" />
+                                <input type="hidden" class="pageid_clickgoal" name="click_goal_pageid[]" />
+                                <input type="hidden" class="selector_clickgoal" name="click_goal_selector[]" />
+
+                                <div class="additional_project_config bt_clickgoals_config">
+                                    <div class="headline">
+                                        <label class="bt_additional_label bt_additional_show">
+                                            <strong>► </strong>Erweiterte Einstellungen                                        </label>
+                                        <div class="bt_additional_settings">
+                                            <label>Name</label>
+                                            <div class="clear"></div>
+                                            
+                                            <input type="text" class="cgoal_input click_goals_name textbox validate[required,funcCall[validateUniqueNameAndSelector]]" id="cgoal_name" />
+                                            <div class="clear"></div>
+                                            
+                                            <label>CSS-Selektor</label>
+                                            <div class="clear"></div>
+                                            
+                                            <input type="text" class="cgoal_input click_goals_selector textbox validate[required,funcCall[validateUniqueNameAndSelector]]" id="cgoal_selector" />
+                                            <div class="clear"></div>
+                                        </div>
+                                    </div>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="separator_line "></div>
+                            </div></div><!-- conversion_goal_ph -->
+                    </div><!-- conversion_goals -->                   
+            </div>
+            <div>
+                <div class="links">
+                    <a onclick="AddNewGoal('#vab2_5')" href="javascript:void(0)" class="button-4-4">Ein Ziel hinzufügen</a>
+                    <input type="text" class="nogoalcheck validate[required]" name="nogoalcheck" id="nogoalcheck" value="" />
+                </div>
+            </div>
+
+
+                            <div class="ctrl-buttons">
+                    <div class="clear"></div>
+                    <div class="links">
+                        <a class="editor_back" onclick="CreateVisualAB(4, true)" href="javascript:void(0)">Projektname und URL festlegen</a>
+                    </div>
+                    <input type="submit" value="Speichern und Projekt erstellen" class="button ok" />
+                </div>
+                
+
+
+
+        </form>
+    </div>
+
+</div>
+
+
+
+<script id="st_editor_radios" type="bt_template">
+    &lt;span class="four_side_radios"&gt;
+        &lt;label class="radio" &gt;&lt;input class="default_radio" type="radio" value="all" name="" checked&gt;All&lt;/label&gt;
+        &lt;!--&lt;label class="radio" &gt;&lt;input type="radio" value="0" name=""&gt;Top&lt;/label&gt;
+        &lt;label class="radio" &gt;&lt;input type="radio" value="1" name=""&gt;Right&lt;/label&gt;
+        &lt;label class="radio" &gt;&lt;input type="radio" value="2" name=""&gt;Bottom&lt;/label&gt;
+        &lt;label class="radio" &gt;&lt;input type="radio" value="3" name=""&gt;Left&lt;/label&gt;--&gt;
+        &lt;label class="radio" &gt;&lt;input type="radio" value="3" name=""&gt;Individual&lt;/label&gt;
+    &lt;/span&gt;
+</script>
+
+<div class="confirmation confirmation-user editor_popup ui-draggable" id="st_editor">
+    <h1 style="cursor: move;">CSS bearbeiten  <span id="st_tagname"></span></h1>
+
+    <div id="st_editor_tabs">
+        <div class="tabs_main">
+            <div class="tabs_container">
+                <div class="zone_tabs">
+                    <div data-tab="text_tab" class="tab selected"><a>Text</a></div>
+                    <div data-tab="color_tab" class="tab"><a>Color/Background</a></div>
+                    <div data-tab="dimensions_tab" class="tab"><a>Dimensions</a></div>
+                    <div data-tab="layout_tab" class="tab"><a>Layout</a></div>
+                    <div data-tab="border_tab" class="tab"><a>Borders</a></div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-content selected" id="text_tab">
+            <div class="column right">
+                <div class="field">
+                    <label>Font Style</label>
+                    <select data-css_prop="font-style"><option value=""></option><option value="normal">normal</option><option value="italic">italic</option><option value="oblique">oblique</option><option value="inherit">inherit</option></select>
+                <div class="property_controls"><button class="st_field_undo">Reset</button> <button class="st_field_apply">Apply</button></div> </div>
+
+                <div class="field">
+                    <label>Text Alignment</label>
+                    <select data-css_prop="text-align"><option value=""></option><option value="start">start</option><option value="left">left</option><option value="right">right</option><option value="center">center</option><option value="justify">justify</option><option value="inherit">inherit</option></select>
+                <div class="property_controls"><button class="st_field_undo">Reset</button> <button class="st_field_apply">Apply</button></div> </div>
+                <div class="field">
+                    <label>Text Decoration</label>
+                    <select data-css_prop="text-decoration"><option value=""></option><option value="none">none</option><option value="underline">underline</option><option value="overline">overline</option><option value="line-through">line-through</option><option value="blink">blink</option><option value="inherit">inherit</option></select>
+                <div class="property_controls"><button class="st_field_undo">Reset</button> <button class="st_field_apply">Apply</button></div> </div>
+            </div>
+            <div class="column">
+                <div class="field">
+                    <label>Font Family</label>
+                    <input type="text" data-css_prop="font-family" id="st_font_family" />
+                <div class="property_controls"><button class="st_field_undo">Reset</button> <button class="st_field_apply">Apply</button></div> </div>
+                <div class="field">
+                    <label>Font Size</label>
+                   <!-- <select data-css_prop="font-size"></select>-->
+                    <input type="text" data-css_prop="font-size" />
+                <div class="property_controls"><button class="st_field_undo">Reset</button> <button class="st_field_apply">Apply</button></div> </div>
+
+                <div class="field">
+                    <label>Font Weight</label>
+                    <select data-css_prop="font-weight"><option value=""></option><option value="normal">normal</option><option value="bold">bold</option><option value="bolder">bolder</option><option value="lighter">lighter</option><option value="100">100</option><option value="200">200</option><option value="300">300</option><option value="400">400</option><option value="500">500</option><option value="600">600</option><option value="700">700</option><option value="800">800</option><option value="900">900</option><option value="inherit">inherit</option></select>
+                <div class="property_controls"><button class="st_field_undo">Reset</button> <button class="st_field_apply">Apply</button></div> </div>
+            </div>
+
+        </div>
+        <div class="tab-content" id="color_tab">
+            <!--<div class="column">-->
+            <div class="column right block_labels">
+                <div class="field">
+                    <label>Background Position</label>
+                    <input type="text" data-css_prop="background-position" />
+                <div class="property_controls"><button class="st_field_undo">Reset</button> <button class="st_field_apply">Apply</button></div> </div>
+                <div class="field">
+                    <label>Background Repeat</label>
+                    <select data-css_prop="background-repeat"><option value=""></option><option value="repeat">repeat</option><option value="repeat-x">repeat-x</option><option value="repeat-y">repeat-y</option><option value="no-repeat">no-repeat</option><option value="inherit">inherit</option></select>
+                <div class="property_controls"><button class="st_field_undo">Reset</button> <button class="st_field_apply">Apply</button></div> </div>
+            </div>
+            <div class="column block_labels">
+                <div class="field">
+                    <label style="line-height: 30px">Font Color</label>
+                    <input type="text" data-css_prop="color" id="st_color" class="color_input" />
+                <div class="property_controls"><button class="st_field_undo">Reset</button> <button class="st_field_apply">Apply</button></div> </div>
+
+                <div class="field">
+                    <label>Background Color</label>
+                    <input type="text" data-css_prop="background-color" id="st_bg_color" class=" color_input" />
+
+                <div class="property_controls"><button class="st_field_undo">Reset</button> <button class="st_field_apply">Apply</button></div> </div>
+                <!--<div class="field">
+                    <label>Background Image</label>
+                    <input   type="text" data-css_prop="background-image"/>
+                </div>-->
+
+            </div>
+            <div class="block_labels">
+                <div class="field">
+                    <label>Background Image</label>
+                    <input type="text" style="width: 446px" data-css_prop="background-image" />
+
+                <div class="property_controls"><button class="st_field_undo">Reset</button> <button class="st_field_apply">Apply</button></div> </div>
+            </div>
+
+        </div>
+
+        <div class="tab-content" id="dimensions_tab">
+            <div class="column right  narrow_labels">
+                <div class="field">
+                    <label>Margin</label>
+                    <input type="text" data-css_prop="margin" />
+                <div class="property_controls"><button class="st_field_undo">Reset</button> <button class="st_field_apply">Apply</button></div> </div>
+                <div class="field">
+                    <label>Padding</label>
+                    <input type="text" data-css_prop="padding" />
+                <div class="property_controls"><button class="st_field_undo">Reset</button> <button class="st_field_apply">Apply</button></div> </div>
+            </div>
+            <div class="column  narrow_labels">
+                <div class="field">
+                    <label>Width</label>
+                    <input type="text" data-css_prop="width" />
+                <div class="property_controls"><button class="st_field_undo">Reset</button> <button class="st_field_apply">Apply</button></div> </div>
+                <div class="field">
+                    <label>Height</label>
+                    <input type="text" data-css_prop="height" />
+                <div class="property_controls"><button class="st_field_undo">Reset</button> <button class="st_field_apply">Apply</button></div> </div>
+            </div>
+
+        </div>
+        <div class="tab-content" id="layout_tab">
+            <div class="column right narrow_labels">
+                <div class="field">
+                    <label class="advanced">Display </label>
+                    <select data-css_prop="display"><option value=""></option><option value="inline">inline</option><option value="block">block</option><option value="list-item">list-item</option><option value="inline-block">inline-block</option><option value="table">table</option><option value="inline-table">inline-table</option><option value="table-row-group">table-row-group</option><option value="table-header-group">table-header-group</option><option value="table-footer-group">table-footer-group</option><option value="table-row">table-row</option><option value="table-column-group">table-column-group</option><option value="table-column">table-column</option><option value="table-cell">table-cell</option><option value="table-caption">table-caption</option><option value="none">none</option><option value="inherit">inherit</option></select>
+                <div class="property_controls"><button class="st_field_undo">Reset</button> <button class="st_field_apply">Apply</button></div> </div>
+                <div class="field">
+                    <label class="advanced">Visibility</label>
+                    <select data-css_prop="visibility"><option value=""></option><option value="visible">visible</option><option value="hidden">hidden</option><option value="collapse">collapse</option><option value="inherit">inherit</option></select>
+                <div class="property_controls"><button class="st_field_undo">Reset</button> <button class="st_field_apply">Apply</button></div> </div>
+                <div class="field">
+                    <label>Position </label>
+                    <select data-css_prop="position"><option value=""></option><option value="static">static</option><option value="relative">relative</option><option value="absolute">absolute</option><option value="fixed">fixed</option><option value="inherit">inherit</option></select>
+                <div class="property_controls"><button class="st_field_undo">Reset</button> <button class="st_field_apply">Apply</button></div> </div>
+                <div class="field">
+                    <label>Float</label>
+                    <select data-css_prop="float"><option value=""></option><option value="left">left</option><option value="right">right</option><option value="none">none</option><option value="inherit">inherit</option></select>
+                <div class="property_controls"><button class="st_field_undo">Reset</button> <button class="st_field_apply">Apply</button></div> </div>
+                <div class="field">
+                    <label>Clear</label>
+                    <select data-css_prop="clear"><option value=""></option><option value="none">none</option><option value="left">left</option><option value="right">right</option><option value="both">both</option><option value="inherit">inherit</option></select>
+                <div class="property_controls"><button class="st_field_undo">Reset</button> <button class="st_field_apply">Apply</button></div> </div>
+
+            </div>
+            <div class="column  narrow_labels">
+
+                <div class="field">
+                    <label>Left </label>
+                    <input type="text" data-css_prop="left" />
+                <div class="property_controls"><button class="st_field_undo">Reset</button> <button class="st_field_apply">Apply</button></div> </div>
+
+                <div class="field">
+                    <label>Top</label>
+                    <input type="text" data-css_prop="top" />
+                <div class="property_controls"><button class="st_field_undo">Reset</button> <button class="st_field_apply">Apply</button></div> </div>
+
+                <div class="field">
+                    <label>Right </label>
+                    <input type="text" data-css_prop="right" />
+                <div class="property_controls"><button class="st_field_undo">Reset</button> <button class="st_field_apply">Apply</button></div> </div>
+
+                <div class="field">
+                    <label>Bottom</label>
+                    <input type="text" data-css_prop="bottom" />
+                <div class="property_controls"><button class="st_field_undo">Reset</button> <button class="st_field_apply">Apply</button></div> </div>
+                <div class="field">
+                    <label>Z Index</label>
+                    <input type="text" data-css_prop="z-index" />
+                <div class="property_controls"><button class="st_field_undo">Reset</button> <button class="st_field_apply">Apply</button></div> </div>
+
+            </div>
+
+
+        </div>
+
+        <div class="tab-content" id="border_tab">
+            <div class="column right"></div>
+            <!--<div class="column">-->
+            <div>
+                <div class="field">
+                    <label>Border Color</label>
+                    <input type="text" data-css_prop="border-color" id="st_border_color" class="color_input master_property" /><span class="four_side_radios">
+        <label class="radio"><input type="radio" checked="checked" name="border-color" value="all" class="default_radio" />All</label>
+        <!--<label class="radio" ><input type="radio" value="0" name="">Top</label>
+        <label class="radio" ><input type="radio" value="1" name="">Right</label>
+        <label class="radio" ><input type="radio" value="2" name="">Bottom</label>
+        <label class="radio" ><input type="radio" value="3" name="">Left</label>-->
+        <label class="radio"><input type="radio" name="border-color" value="3" />Individual</label>
+    </span><div style="clear:both" class="sub_properties"><span class="sub_prop_label">Top</span><input type="text" class="color_property sub_property" data-css_prop="border-top-color" /><span class="sub_prop_label">Right</span><input type="text" class="color_property sub_property" data-css_prop="border-right-color" /><span class="sub_prop_label">Bottom</span><input type="text" class="color_property sub_property" data-css_prop="border-bottom-color" /><span class="sub_prop_label">Left</span><input type="text" class="color_property sub_property" data-css_prop="border-left-color" /><div class="property_controls"><button class="st_field_undo">Reset</button> <button class="st_field_apply">Apply</button></div> </div>
+                <div class="property_controls"><button class="st_field_undo">Reset</button> <button class="st_field_apply">Apply</button></div> </div>
+                <div class="field">
+                    <label>Border Style</label>
+                    <select data-css_prop="border-style" class="master_property"><option value=""></option><option value="none">none</option><option value="hidden">hidden</option><option value="dotted">dotted</option><option value="dashed">dashed</option><option value="solid">solid</option><option value="double">double</option><option value="groove">groove</option><option value="ridge">ridge</option><option value="inset">inset</option><option value="outset">outset</option></select><span class="four_side_radios">
+        <label class="radio"><input type="radio" checked="checked" name="border-style" value="all" class="default_radio" />All</label>
+        <!--<label class="radio" ><input type="radio" value="0" name="">Top</label>
+        <label class="radio" ><input type="radio" value="1" name="">Right</label>
+        <label class="radio" ><input type="radio" value="2" name="">Bottom</label>
+        <label class="radio" ><input type="radio" value="3" name="">Left</label>-->
+        <label class="radio"><input type="radio" name="border-style" value="3" />Individual</label>
+    </span><div style="clear:both" class="sub_properties"><span class="sub_prop_label">Top</span><select class="sub_property" data-css_prop="border-top-style"><option value=""></option><option value="none">none</option><option value="hidden">hidden</option><option value="dotted">dotted</option><option value="dashed">dashed</option><option value="solid">solid</option><option value="double">double</option><option value="groove">groove</option><option value="ridge">ridge</option><option value="inset">inset</option><option value="outset">outset</option></select><span class="sub_prop_label">Right</span><select class="sub_property" data-css_prop="border-right-style"><option value=""></option><option value="none">none</option><option value="hidden">hidden</option><option value="dotted">dotted</option><option value="dashed">dashed</option><option value="solid">solid</option><option value="double">double</option><option value="groove">groove</option><option value="ridge">ridge</option><option value="inset">inset</option><option value="outset">outset</option></select><span class="sub_prop_label">Bottom</span><select class="sub_property" data-css_prop="border-bottom-style"><option value=""></option><option value="none">none</option><option value="hidden">hidden</option><option value="dotted">dotted</option><option value="dashed">dashed</option><option value="solid">solid</option><option value="double">double</option><option value="groove">groove</option><option value="ridge">ridge</option><option value="inset">inset</option><option value="outset">outset</option></select><span class="sub_prop_label">Left</span><select class="sub_property" data-css_prop="border-left-style"><option value=""></option><option value="none">none</option><option value="hidden">hidden</option><option value="dotted">dotted</option><option value="dashed">dashed</option><option value="solid">solid</option><option value="double">double</option><option value="groove">groove</option><option value="ridge">ridge</option><option value="inset">inset</option><option value="outset">outset</option></select><div class="property_controls"><button class="st_field_undo">Reset</button> <button class="st_field_apply">Apply</button></div> </div>
+                <div class="property_controls"><button class="st_field_undo">Reset</button> <button class="st_field_apply">Apply</button></div> </div>
+                <div class="field">
+                    <label>Border Width</label>
+                    <input type="text" data-css_prop="border-width" class="master_property" /><span class="four_side_radios">
+        <label class="radio"><input type="radio" checked="checked" name="border-width" value="all" class="default_radio" />All</label>
+        <!--<label class="radio" ><input type="radio" value="0" name="">Top</label>
+        <label class="radio" ><input type="radio" value="1" name="">Right</label>
+        <label class="radio" ><input type="radio" value="2" name="">Bottom</label>
+        <label class="radio" ><input type="radio" value="3" name="">Left</label>-->
+        <label class="radio"><input type="radio" name="border-width" value="3" />Individual</label>
+    </span><div style="clear:both" class="sub_properties"><span class="sub_prop_label">Top</span><input type="text" class="sub_property" data-css_prop="border-top-width" /><span class="sub_prop_label">Right</span><input type="text" class="sub_property" data-css_prop="border-right-width" /><span class="sub_prop_label">Bottom</span><input type="text" class="sub_property" data-css_prop="border-bottom-width" /><span class="sub_prop_label">Left</span><input type="text" class="sub_property" data-css_prop="border-left-width" /><div class="property_controls"><button class="st_field_undo">Reset</button> <button class="st_field_apply">Apply</button></div> </div>
+
+                <div class="property_controls"><button class="st_field_undo">Reset</button> <button class="st_field_apply">Apply</button></div> </div>
+                <div class="field">
+                    <label>Border Radius</label>
+                    <input type="text" data-css_prop="border-radius" class="master_property" /><span class="four_side_radios">
+        <label class="radio"><input type="radio" checked="checked" name="border-radius" value="all" class="default_radio" />All</label>
+        <!--<label class="radio" ><input type="radio" value="0" name="">Top</label>
+        <label class="radio" ><input type="radio" value="1" name="">Right</label>
+        <label class="radio" ><input type="radio" value="2" name="">Bottom</label>
+        <label class="radio" ><input type="radio" value="3" name="">Left</label>-->
+        <label class="radio"><input type="radio" name="border-radius" value="3" />Individual</label>
+    </span><div style="clear:both" class="sub_properties"><span class="sub_prop_label">Top Left</span><input type="text" class="sub_property" data-css_prop="border-top-left-radius" /><span class="sub_prop_label">Top Right</span><input type="text" class="sub_property" data-css_prop="border-top-right-radius" /><span class="sub_prop_label">Bottom Right</span><input type="text" class="sub_property" data-css_prop="border-bottom-right-radius" /><span class="sub_prop_label">Bottom Left</span><input type="text" class="sub_property" data-css_prop="border-bottom-left-radius" /><div class="property_controls"><button class="st_field_undo">Reset</button> <button class="st_field_apply">Apply</button></div> </div>
+                <div class="property_controls"><button class="st_field_undo">Reset</button> <button class="st_field_apply">Apply</button></div> </div>
+            </div>
+        </div>
+
+
+    </div>
+    <!--Buttons-->
+    <div class="links-3-4">
+        <div class="ctrl-buttons">
+                        <input type="button" value="Abbrechen" class="BtEditorButton" id="st_editor_cancel" />
+            <input type="button" value="Änderungen speichern" class="BtEditorButton" id="st_editor_save" />
+
+            
+
+
+
+
+
+        </div>
+    </div>
+</div><div class="mpt_popup">
+    <input type="hidden" value="Dieser Name wird bereits für eine andere Seite verwendet" id="mpt_name_error" />
+    <input type="hidden" value="Dieser URL wird bereits für eine andere Seite verwendet" id="mpt_url_error" />
+    
+    <div id="mpt_manage_pages" class="confirmation confirmation-user">
+        <h1>Mehrseitigen Test bearbeiten</h1>
+        <form action="javascript:void(0);" method="post" name="mpt_pages_form" id="mpt_pages_form">
+            Verwalten Sie hier die Seiten ihres mehrseitigen Tests.
+            <div id="mpt_pages_list">
+                <div class="mpt_page_container mpt_page_first">
+                    <input type="hidden" name="mpt_page_id[]" class="mpt_page_id" />
+                    <input type="hidden" name="mpt_page_url[]" class="mpt_page_url" value="http://www.eckhardschneider.de/blacktritest/testpage_live.html" />
+                    <input type="text" name="mpt_pages[]" class="textbox mpt_pages" />
+                    <div title="Löschen" class="mpt_delete_icon">
+                        <span class="mpt_icon"></span>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+
+            <div class="sep"></div>
+
+            <div class="links">
+                <a href="javascript:void(0);" class="button-4-4" id="mtp_new_page">
+                    Seite hinzufügen                </a>
+            </div>
+
+            <div class="ctrl-buttons">
+                <div class="links">
+                    <a href="#" class="editor_back" id="mpt_cancel_pages">
+                        Abbrechen                    </a>
+                </div>
+                <input type="submit" value="Speichern" class="button ok" />
+            </div>
+
+        </form>
+    </div>
+
+</div>
+
+<div class="mpt_popup">
+    <div id="deleteConfirm" class="confirmation-user confirmation smallpopup">
+        <input type="hidden" id="deleteid" name="deleteid" />
+        <h1>Wollen Sie die Seite(n) wirklich löschen?</h1>
+        <div>Dies kann nicht rückgängig gemacht werden.</div>
+
+        <div class="ctrl-buttons">
+            <div class="links">
+                <a href="#" class="editor_back" id="mpt_delete_cancel">
+                    Abbrechen                </a>
+            </div>
+            <input type="submit" value="Löschen" class="button ok" id="mpt_confirm_page_delete" />
+        </div>                               
+    </div>
+</div>
+
+<div class="mpt_popup">
+    <div id="mpt_visual_name_url" class="confirmation-user confirmation">
+        <h1>Geben Sie Name und URL der neuen Seite an.</h1>
+        <form method="post" id="mpt_pageurl_form">
+            <div class="confirmation-field w100">
+                <label>Geben Sie den Namen der neuen Seite an.</label>
+                <input type="text" class="validate[required,funcCall[mpt_validatePageName]] textbox" id="mpt_page_name" />
+                <div class="clear"></div>
+                <div class="popup-textinfo">Example: Home page or Shopping basket page</div>
+                <div class="clear"></div>
+
+                <label>Geben Sie hier die URL der Originalseite ein, die Sie optimieren wollen.</label>
+                <div>
+                    Sie können dazu die Seite im Browser öffnen und die URL aus der Adresszeile kopieren. 
+                    <a target="_blank" class="help_link" href="https://blacktri-jira.atlassian.net/wiki/x/bgB7AQ">(Was muss ich dabei beachten?)</a>                </div>
+                <input type="text" placeholder="http://" id="mpt_vab_page_url" class="validate[required,custom[urlsmall],[required,funcCall[mpt_validatePageUrl]]] textbox" />
+                <div class="clear"></div>
+                <div class="popup-textinfo">Beispiel: http://www.mylandingpage.com oder http://www.mylandingpage.com/article.jsp?id=4711</div>
+
+
+                <div class="ctrl-buttons">
+                    <div class="links">
+                        <a href="#" class="editor_back">
+                            Zurück                        </a>
+                    </div>
+                    <input type="submit" value="Speichern" class="button ok" id="mpt_save_page_url" />
+                    <div class="clear"></div>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </form>
+    </div>
+</div>
+<div id="fancybox-tmp"></div><div id="fancybox-loading"><div></div></div><div id="fancybox-overlay"></div><div id="fancybox-wrap" style=""><div id="fancybox-outer"><div id="fancybox-bg-n" class="fancybox-bg"></div><div id="fancybox-bg-ne" class="fancybox-bg"></div><div id="fancybox-bg-e" class="fancybox-bg"></div><div id="fancybox-bg-se" class="fancybox-bg"></div><div id="fancybox-bg-s" class="fancybox-bg"></div><div id="fancybox-bg-sw" class="fancybox-bg"></div><div id="fancybox-bg-w" class="fancybox-bg"></div><div id="fancybox-bg-nw" class="fancybox-bg"></div><div id="fancybox-content"></div><a id="fancybox-close"></a><div id="fancybox-title"></div><a id="fancybox-left" href="javascript:;"><span id="fancybox-left-ico" class="fancy-ico"></span></a><a id="fancybox-right" href="javascript:;"><span id="fancybox-right-ico" class="fancy-ico"></span></a></div></div></body><canvas id="fxdriver-screenshot-canvas" style="display: none;" width="1440" height="711"></canvas></html>
