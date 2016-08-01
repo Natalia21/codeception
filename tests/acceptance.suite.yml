@@ -9,5 +9,5 @@ modules:
     enabled:
         - WebDriver:
             url: http://www.blacktri.com
-            browser: firefox
+            browser: phantomjs
         - \Helper\Acceptance
